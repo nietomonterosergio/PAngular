@@ -1,0 +1,18 @@
+<div class="color">
+    <h1>El atributo1 es un titulo: {{atributo1}}</h1>
+    <h2>El atributo2 es un array: {{atributo2}}</h2>
+
+    <ul>
+        <!--El atributo *ngFor es para recorrer el array-->
+
+        <li *ngFor="let equipo of atributo2">    
+            {{equipo}}
+        </li>
+    </ul>
+
+    <h2>Ahora podemos mostras el array de otra forma</h2>
+    <ul>
+        <!--Los mostramos haciendo referencia a un parametro de entrada, llamando a otro componente distinto-->
+        <app-tercer *ngFor="let equipo of atributo2" [nombreEquipo]="equipo"></app-tercer>
+    </ul>
+</div>

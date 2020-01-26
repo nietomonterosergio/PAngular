@@ -1,0 +1,33 @@
+<h1>Gestión de Hobbits</h1>
+
+<h2>Aquí realizamos la gestión de los Hobbits esos: </h2>
+
+<ul>
+    <li *ngFor="let enjendro of lista">
+        {{enjendro}}
+    </li>
+</ul>
+<form>
+    <input type="text" name="nombre" [(ngModel)]="gHobbit" placeholder="Mete nuevo hobbit de esos">
+    <button (click)="AMboton()">{{accion.nombre}}</button>
+</form>
+
+<br>
+
+<table *ngIf="lista.length > 0">
+    <thead>
+        <tr>
+            <th>Nombre del hobbit</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Para el índice:  "index  as i"  o también "let i = index"-->
+        <tr *ngFor="let nombre of lista; index as i">
+            <td>{{nombre}}</td>
+            <td><button (click)="editar(nombre, i)">Editar</button>
+                <button (click)="eliminar(nombre)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

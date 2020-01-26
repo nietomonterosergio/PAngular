@@ -1,0 +1,43 @@
+<p *ngIf="mostrar">
+    Este parrafo se mostrará si el la condición mostar es true
+</p>
+
+<p>FORMULARIO</p>
+
+<!--Recordar que para que el form no de error hay quer importar en el app.module.ts el formulario-->
+<form>
+    <label>Nombre: </label>
+    <input type="text" name="nombre" [(ngModel)]="datos.nombre">
+     <!--Esto del ngModel es para hacer una llamada un get y post a la vez, dobleDataBuilding, Cambiar los datos en tiempo real-->
+    <!--Si lo cambiamos en el html se cambia en el "Ts" y al revés-->
+
+    <label>Apellidos: </label>
+    <input type="text" name="apellidos" [(ngModel)]="datos.apellidos">
+
+    <label>Estatura: </label>
+    <input type="number" name="estatura" [(ngModel)]="datos.estatura">
+
+    <label>Fecha Nacimiento: </label>
+    <input type="date" name="fnacimiento" [(ngModel)]="datos.fnacimiento">
+
+    <!--Cuando se haga click en el botón se ejecutrá el evento y llamará a la función enviar-->
+    <button (click)="enviar()">Enviar</button>
+    <button type="reset">Limpiar</button>
+</form>
+
+<p>Los datos del formulario son: </p>
+
+<pre>
+    {{datos | json}}
+</pre>
+
+<p>Ahora ponemos un select</p>
+<select [(ngModel)]="opsel" (ngmodelChange)="seleccion($event)"><!--Cuando se produzca un cambio en el select que se produzca un evento event-->
+    <option *ngFor="let op of opciones" [ngValue]="op"> <!--Para poner cualquier atributo-->
+        {{op.id}}º - {{op.nombre}}
+    </option>
+
+</select>
+
+
+
