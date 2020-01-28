@@ -1,28 +1,47 @@
 <html>
 <h1>{{textoBoton}} Persona</h1>
 
-<div>
-
-    <label>DNI</label>
-    <input type="text" name="dni" [(ngModel)]="datosPersona.dni">
-
-    <br>
-
-    <label>NOMBRE</label>
-    <input type="text" name="nombre" [(ngModel)]="datosPersona.nombre">
-
-    <br>
-
-    <label>APELLIDOS</label>
-    <input type="text" name="apellidos" [(ngModel)]="datosPersona.apellidos">
-
-    <br>
-</div>
 
 <div>
-    <button class="btn btn primary mr-3*" type="submit" (click)="addModPersona()">{{textoBoton}}</button>
 
-    <button class="btn btn-primary" type="button" routerLink="/">Cancelar</button>
+    <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="addModPersona(personaForm.value)">
+        <div class="form-group">
+            <label>DNI: </label>
+            <input type="text" class="form-control" required [(ngModel)]="datosPersona.dni" name="dni" #dni="ngModel">
+            <div [hidden]="dni.valid || dni.pristine" class="alert alert-danger">
+                El DNI es obligatorio
+            </div>
+        </div>
+        <div class="form-group">
+            <label>NOMBRE: </label>
+            <input type="text" class="form-control" required [(ngModel)]="datosPersona.nombre" name="nombre" #nombre="ngModel">
+            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+                El Nombre es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>APELLIDOS: </label>
+            <input type="text" class="form-control" required [(ngModel)]="datosPersona.apellidos" name="apellidos" #apellidos="ngModel">
+            <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+                Los Apellidos son obligatorios
+            </div>
+        </div>
+
+
+        <div>
+            <button class="btn btn-primary mr-3" type="submit" [disabled]="!personaForm.valid">
+				{{textoBoton}}
+			</button>
+            <button type="button" class="btn btn-primary" routerLink="/">Cancelar</button>
+            <!--
+				Si queremos que mantenga los parámetros de la ruta sería así:
+				 <button type="button" class="btn btn-primary" routerLink="../">Cancelar</button>
+			-->
+        </div>
+
+    </form>
+
 </div>
 
 
