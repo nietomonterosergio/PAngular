@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Persona } from './persona';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class PAJAXService {
     var objListar = {
       servicio: "listar"
     };
-    return this.http.post(this.urlServidor, JSON.stringify(objListar));
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objListar));
   }
 
   petiAnadir(dni:String, nombre: string, apellidos: string){
@@ -42,24 +43,37 @@ export class PAJAXService {
       nombre: nombre,
       apellidos: apellidos
     };
-    return this.http.post(this.urlServidor, JSON.stringify(objAnadir))
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objAnadir))
   }
 
-  petiBorrar(id){
+  petiBorrar(id: number){
     console.log("Estoy en borrar");
     var objBorrar = {
       servicio: "borrar",
       id: id
     };
-    return this.http.post(this.urlServidor, JSON.stringify(objBorrar));
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objBorrar));
   }
 
-  petiSelPersona(id){
+  petiSelPersona(id: number){
     console.log("Estoy en selPersona");
     var objSelPersona = {
       servicio: "selPersonaID",
       id: id
     }
-    return this.http.post(this.urlServidor, JSON.stringify(objSelPersona));
+    return this.http.post<Persona>(this.urlServidor, JSON.stringify(objSelPersona));
+  }
+
+  petiModificar(dni:String, nombre:String, apellidos: String, id: number ){
+    console.log("Estoy en modificar");
+    var objModificar = {
+      servicio: "modificar",
+      dni: dni,
+      nombre: nombre,
+      apellidos: apellidos,
+      id: id
+    };
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objModificar));
+
   }
 }

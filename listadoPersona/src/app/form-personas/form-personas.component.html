@@ -1,31 +1,33 @@
 <html>
-    <h1>Añadir Persona</h1>
+<h1>{{textoBoton}} Persona</h1>
 
-    <div>
+<div>
 
     <label>DNI</label>
-    <input type="text" name="dni" [(ngModel)]="datos.dni">
+    <input type="text" name="dni" [(ngModel)]="datosPersona.dni">
 
     <br>
 
     <label>NOMBRE</label>
-    <input type="text" name="nombre" [(ngModel)]="datos.nombre">
+    <input type="text" name="nombre" [(ngModel)]="datosPersona.nombre">
 
     <br>
 
     <label>APELLIDOS</label>
-    <input type="text" name="apellidos" [(ngModel)]="datos.apellidos">
+    <input type="text" name="apellidos" [(ngModel)]="datosPersona.apellidos">
 
     <br>
-    </div>
+</div>
 
-    <div>
-        <button class="btn btn primary mr-3*" type="submit" (click)="anadirPersona()">AÑADIR</button>
+<div>
+    <button class="btn btn primary mr-3*" type="submit" (click)="addModPersona()">{{textoBoton}}</button>
 
-        <button class="btn btn-primary" type="button" routerLink="/">Cancelar</button>
-    </div>
+    <button class="btn btn-primary" type="button" routerLink="/">Cancelar</button>
+</div>
 
-    <pre>
-        {{ datos | json }}
+
+<pre>
+        {{ datosPersona | json }}
     </pre>
+
 </html>

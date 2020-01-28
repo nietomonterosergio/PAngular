@@ -20,7 +20,7 @@ export class FormModificarComponent implements OnInit {
   };
 
   constructor(private servicioAjax: PAJAXService, private ruta: Router, private route:ActivatedRoute) {
-
+    this.datos = {dni: "", nombre:"", apellidos: ""};
    }
 
   ngOnInit() {
@@ -29,8 +29,9 @@ export class FormModificarComponent implements OnInit {
     personaId;
 
     //Seleccionamos persona
-    this.servicioAjax.petiSelPersona(this.id).subscribe(respuesta => {
+    this.servicioAjax.petiSelPersona(personaId).subscribe(respuesta => {
       console.log(respuesta);
+      
       
       
     });

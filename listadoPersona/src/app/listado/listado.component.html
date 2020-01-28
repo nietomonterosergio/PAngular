@@ -1,8 +1,8 @@
 <p>
     <!--Se puede navegar de dos formas diferentes-->
-    <a class="btn btn-primary" routerLink="/personas-add/-1" role="button">Añadir Persona E</a>
-    <span> | </span>
-    <button type="button" class="btn btn-primary" (click)="iraNuevaPersona()">Añadir Persona B</button>
+    <a class="btn btn-primary mr-4" routerLink="/personas-add/-1" role="button">Añadir Persona E</a>
+    <span>  </span>
+    <button type="button" class="btn btn-info" (click)=" iraNuevaPersona() ">Añadir Persona B</button>
 </p>
 
 
@@ -18,17 +18,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let persona of datosPersonas">
-            <td>{{persona.ID}}</td>
-            <td>{{persona.DNI}}</td>
-            <td>{{persona.NOMBRE}}</td>
-            <td>{{persona.APELLIDOS}}</td>
+        <!--Tener en cuenta que al crear la interfaces personas los atributos se escribiran tal y como lo hemos definido en minus-->
+        <tr *ngFor="let persona of datosPersonas ">
+            <td>{{persona.id}}</td>
+            <td>{{persona.dni}}</td>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellidos}}</td>
             <td>
-                <button (click)="borrarPersona(persona.ID, persona.NOMBRE, persona.APELLIDOS)">Borrar</button>
+                <button (click)="borrarPersona(persona.id, persona.nombre, persona.apellidos) ">Borrar</button>
             </td>
 
             <td>
-                <button routerLink="/personas-mod/{{persona.ID}}">Modificar</button>
+                <button routerLink="/personas-add/{{persona.id}} ">Modificar</button>
             </td>
         </tr>
     </tbody>

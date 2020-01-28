@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PAJAXService} from "../p-ajax.service";
+import {Persona} from "../persona";
 
 //Para poder navegar (routing) de forma progrmática:
 import {Router, ActivatedRoute} from '@angular/router';
@@ -12,7 +13,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class ListadoComponent implements OnInit {
 
   //Atributos
-  private datosPersonas: Object;
+ // private datosPersonas: Object;
+
+ //Creamos un atributo de la interface
+ private datosPersonas: Persona[];
 
   constructor(private servicioAjax: PAJAXService, private ruta: Router, private route:ActivatedRoute) { 
 
@@ -29,8 +33,9 @@ export class ListadoComponent implements OnInit {
     //Segunda opción
     //Solo realizando la petición
     this.servicioAjax.petiListar().subscribe(respuesta => {
+      console.log("Se viene el array de objetos");
       console.log(respuesta);
-
+      
       this.mostrarPersona(respuesta);
 
     });
@@ -39,9 +44,11 @@ export class ListadoComponent implements OnInit {
 //Métodos y funciones
 
   ngOnInit() {
+    
   }
 
-  mostrarPersona(datos: Object) {
+  mostrarPersona(datos: Persona[]) {
+    console.log("Dentro de mostarPersona");
     console.log(datos);
     this.datosPersonas = datos;
   }
@@ -50,7 +57,7 @@ export class ListadoComponent implements OnInit {
     this.ruta.navigate(['personas-add/-1']);
   };
 
-  borrarPersona(id, nombre:String, apellidos:String) {
+  borrarPersona(id: number, nombre:String, apellidos:String) {
     console.log(id);
 
     if(confirm("¿Estas seguro que quieres borrar a "+nombre + apellidos+"?")){
@@ -73,6 +80,10 @@ export class ListadoComponent implements OnInit {
   // irModificarPersona(id, dni, nombre, apellidos){
   //   this.ruta.navigate(['personas-mod/id'])
   // }
+
+
+  //Utilizando el componente de añadir
+  
 
 
 
