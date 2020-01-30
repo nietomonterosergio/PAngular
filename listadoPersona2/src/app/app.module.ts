@@ -7,14 +7,14 @@ import {FormsModule} from '@angular/forms';
 import { ListadoComponent } from './listado/listado.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormPersonasComponent } from './form-personas/form-personas.component';
-import { FormPersonaComponent } from './form-persona/form-persona.component';
+import { FormModificarComponent } from './form-modificar/form-modificar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListadoComponent,
     FormPersonasComponent,
-    FormPersonaComponent
+    FormModificarComponent
     
   ],
   imports: [

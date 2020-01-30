@@ -73,17 +73,6 @@ export class ListadoComponent implements OnInit {
     }
   };
 
-  //El modificar se puede hacer de dos maneras, utilizando el formulario anadir o creando otro componente
-
-  //Creando otro componente
-
-  // irModificarPersona(id, dni, nombre, apellidos){
-  //   this.ruta.navigate(['personas-mod/id'])
-  // }
-
-
-  //Utilizando el componente de añadir
-  
 
 
 

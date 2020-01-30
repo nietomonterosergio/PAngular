@@ -1,10 +1,10 @@
 <html>
-<h1> Añadir Persona</h1>
+<h1> Modificar Persona</h1>
 
 
 <div>
 
-    <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="addPersona(personaForm.value)">
+    <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="modPersona(personaForm.value)">
         <div class="form-group">
             <label>DNI: </label>
             <input type="text" class="form-control" required [(ngModel)]="datosPersona.dni" name="dni" #dni="ngModel">
@@ -31,7 +31,7 @@
 
         <div>
             <button class="btn btn-primary mr-3" type="submit" [disabled]="!personaForm.valid">
-				Añadir
+				Modificar
 			</button>
             <button type="button" class="btn btn-primary" routerLink="/">Cancelar</button>
             <!--
