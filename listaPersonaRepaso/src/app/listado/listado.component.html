@@ -1,0 +1,29 @@
+<h1>Listado Personas de repaso</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>BORRAR</th>
+            <th>MODIFICAR</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of personas">
+            <td>{{p.id}}</td>
+            <td>{{p.dni}}</td>
+            <td>{{p.nombre}}</td>
+            <td>{{p.apellidos}}</td>
+
+            <td><button>Borrar</button></td>
+            <td><button>Modificar</button></td>
+        </tr>
+
+
+    </tbody>
+</table>

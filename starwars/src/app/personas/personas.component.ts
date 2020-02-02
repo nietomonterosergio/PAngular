@@ -71,16 +71,17 @@ export class PersonasComponent implements OnInit {
   }
 
   mostrarDatosPlaneta(planetaURL: string, evento) {
-    console.log(planetaURL, evento);
+    console.log(planetaURL);
+    console.log(evento);
 
-    evento.preventDeafult();
+    
 
     this.servicioAjax.petiADir(planetaURL + "?format=json").subscribe(respuesta => {
       console.log(respuesta);
       
 
-      //this.datosPlanetas = respuesta;
-      this.escribirDatosPlaneta(respuesta); 
+      this.datosPlanetas = respuesta;
+     // this.escribirDatosPlaneta(respuesta); 
     });
   }
 
