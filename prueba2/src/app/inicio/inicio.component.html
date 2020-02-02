@@ -1,0 +1,17 @@
+<p>
+    Esto contiene datos1:  {{datos1}}
+</p>
+<p>
+    Esto contiene datos2: {{datosMoreno}}
+</p>
+<p>
+    <button (click)="llamadita($event)">LLamada</button>
+</p>
+
+<!--Parámetro de entrada-->
+<app-borrar [entrada]="'hola'"></app-borrar>
+
+<form>
+    <input type="text" name="texto" [(ngModel)]="modelo">
+    <p>Este es el campo input {{modelo}}</p>
+</form>
