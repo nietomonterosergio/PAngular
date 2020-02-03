@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -20,7 +19,7 @@
                 <th>Homeworld</th>
             </tr>
         </thead>
-           
+
         <tbody id="cuerpoPersonajes">
 
             <tr *ngFor="let personaje of listPer">
@@ -30,8 +29,8 @@
                 <td>{{personaje.birth_year}}</td>
                 <td>{{personaje.gender}}</td>
 
-                <td><a (click)="mostrarDatosPlaneta(personaje.homeworld, $event)">{{personaje.homeworld}}</a></td>
-                <!-- <td><a (click)="mostrarDatosPlaneta(personaje.homeworld, $event)" href="{{personaje.homeworld}}">{{personaje.homeworld}}</a></td> -->
+                <!-- <td><a (click)="mostrarDatosPlaneta(personaje.homeworld, $event)">{{personaje.homeworld}}</a></td> -->
+                <td><a (click)="mostrarDatosPlaneta(personaje.homeworld, $event)" href="{{personaje.homeworld}}">{{personaje.homeworld}}</a></td>
             </tr>
 
         </tbody>
@@ -39,30 +38,30 @@
     </table>
 
     <div>
-        <button id="btAnterior"(click)= previous() >Anterior</button>
-		<button id="btSiguiente"(click)= next()>Siguiente</button> 
+        <button id="btAnterior" (click)=previous()>Anterior</button>
+        <button id="btSiguiente" (click)=next()>Siguiente</button>
     </div>
 
     <br/>
     <!--Esta es la primera manera de escribir los datos del planeta, con un parámetro de entrada-->
-  
-      <div *ngIf="datosPlanetas">Datos del planeta:
-          <app-planeta [planeta]="datosPlanetas"></app-planeta>
-      </div>
-  
+
+    <div *ngIf="datosPlanetas">Datos del planeta:
+        <app-planeta [planeta]="datosPlanetas"></app-planeta>
+    </div>
+
     <!--Esta es la segunda manera de escribir los datos de un planeta, directamente con una función-->
-    
+
     <!--Hay que tener en cuenta que datos planetas aun no se ha echo la petición ajax por lo tanto no se podrá escrbir
        y dará error por eso hay que poner el *ngIf-->
-  
-    <!-- <div *ngIf="datosPlanetas"> Datos del planeta: 
-      <p>Nombre: {{datosPlanetas.name}}</p>
-      <p>Rotación: {{datosPlanetas.rotation_period}}</p>
-      <p>Orbita: {{datosPlanetas.orbital_period}}</p>
-      <p>Clima: {{datosPlanetas.climate}}</p>
-      <p>Gravedad: {{datosPlanetas.gravity}}</p>
-      <p>Terreno: {{datosPlanetas.terrain}}</p>
-  
+
+    <!-- <div *ngIf="datosPlanetas"> Datos del planeta:
+        <p>Nombre: {{datosPlanetas.name}}</p>
+        <p>Rotación: {{datosPlanetas.rotation_period}}</p>
+        <p>Orbita: {{datosPlanetas.orbital_period}}</p>
+        <p>Clima: {{datosPlanetas.climate}}</p>
+        <p>Gravedad: {{datosPlanetas.gravity}}</p>
+        <p>Terreno: {{datosPlanetas.terrain}}</p>
+
     </div> -->
 </body>
 

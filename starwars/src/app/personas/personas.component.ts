@@ -74,6 +74,8 @@ export class PersonasComponent implements OnInit {
     console.log(planetaURL);
     console.log(evento);
 
+    evento.preventDefault();
+
     
 
     this.servicioAjax.petiADir(planetaURL + "?format=json").subscribe(respuesta => {
@@ -81,7 +83,7 @@ export class PersonasComponent implements OnInit {
       
 
       this.datosPlanetas = respuesta;
-     // this.escribirDatosPlaneta(respuesta); 
+     //this.escribirDatosPlaneta(respuesta); 
     });
   }
 
