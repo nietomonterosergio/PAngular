@@ -1,5 +1,7 @@
 <h1>Listado Personas de repaso</h1>
 
+<button type="button" (click)="irNuevaPersona()">Añadir</button>
+
 <table>
     <thead>
         <tr>
@@ -20,8 +22,8 @@
             <td>{{p.nombre}}</td>
             <td>{{p.apellidos}}</td>
 
-            <td><button>Borrar</button></td>
-            <td><button>Modificar</button></td>
+            <td><button (click)="borrarPersona(p.id)">Borrar</button></td>
+            <td><button routerLink="personas-add/{{p.id}}">Modificar</button></td>
         </tr>
 
 

@@ -14,6 +14,7 @@ export class AJAXService {
 
 
   //Funciones o peticiones Ajax
+
   peticionListar(){
     console.log("Estoy en listar");
     var objListar = {
@@ -21,4 +22,45 @@ export class AJAXService {
     };
     return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objListar));
   }
+
+  peticionAnadir(dni:String, nombre: string, apellidos: string){
+    console.log("Estoy en añadir");
+    var objAnadir = {
+      servicio: "insertar",
+      dni: dni,
+      nombre: nombre,
+      apellidos: apellidos
+    };
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objAnadir));
+  }
+
+  peticionBorrar(id: number){
+    console.log("Estoy en borrar");
+    var objBorrar = {
+      servicio: "borrar",
+      id: id
+    }
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objBorrar));
+  }
+
+  peticionSelPersona(id: number){
+    var objSelPersona = {
+      servicio: "selPersonaID",
+      id: id
+    }
+    return this.http.post<Persona>(this.urlServidor, JSON.stringify(objSelPersona));
+  }
+
+  peticionModificar(dni: string, nombre: string, apellidos: string, id:number){
+  
+    var objModificar = {
+      servicio: "modificar",
+      dni: dni,
+      nombre: nombre,
+      apellidos: apellidos,
+      id: id
+    }
+    return this.http.post<Persona[]>(this.urlServidor, JSON.stringify(objModificar));
+  }
+
 }
