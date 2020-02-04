@@ -1,0 +1,99 @@
+<h1>Gestión de facturas</h1>
+
+<h3>Detalle de la factura: {{detalleFactura}}</h3>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CANTIDAD</th>
+                <th>CONCEPTO</th>
+                <th>PRECIO</th>
+                <th>Tipo IVA</th>
+                <th>IVA</th>
+                <th>TOTAL</th>
+                <th>Modificar</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let d of datosDetalle">
+                <td>{{d.id}}</td>
+                <td>{{d.cantidad}}</td>
+                <td>{{d.concepto}}</td>
+                <td>{{d.precio}}</td>
+                <td>{{d.tipo_iva}}</td>
+                <td>{{calcularIva(d.cantidad, d.precio, d.tipo_iva)}}</td>
+                <td>{{calcularTotal()}}</td>
+
+                <td>
+                    <button (click)="mostrarForm(d.cantidad, d.concepto, d.precio, d.tipo_iva)">Modificar</button>
+                </td>
+
+                <td>
+                    <button (click)="borrarDetalle(d.id, d.concepto)">Borrar</button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5">TOTALES: </td>
+                <td>{{ivaTotal}}</td>
+                <td>{{totaliti}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div>
+        <a routerLink="/" routerLinkActive="active" href="Volver">Volver</a>
+        <br>
+        <br>
+
+        <button (click)="mostrarForm()">Nuevo Detalle</button>
+        <br>
+        <br>
+    </div>
+
+    <div *ngIf="mostrar">
+        <form>
+            <fieldset>
+                <legend>{{texto}} Detalle</legend>
+                <br>
+                <label>Cantidad:  </label>
+                <input type="text" name="cantidad" [(ngModel)]="detalle.cantidad">
+                <br>
+                <br>
+
+                <label>Concepto:  </label>
+                <input type="text" name="concepto" [(ngModel)]="detalle.concepto">
+                <br>
+                <br>
+
+                <label>Precio:  </label>
+                <input type="text" name="precio" [(ngModel)]="detalle.precio">
+                <br>
+                <br>
+
+                <label>Tipo_Iva:  </label>
+                <input type="text" name="tipo_iva" [(ngModel)]="detalle.tipo_iva">
+                <br>
+                <br>
+            </fieldset>
+            <br>
+            <button (click)="addModDetalle()">{{texto}} línea detalle</button>
+
+            <br>
+            <br>
+            <pre>
+                {{detalle | json}}
+            </pre>
+        </form>
+
+    </div>
+
+</div>
