@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Owner } from "../../models/owner";
+import { OwnerService } from "../../services/owner.service";
 
 @Component({
   selector: 'app-owners',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnersComponent implements OnInit {
 
-  constructor() { }
+  //Atributos
+  public owners:Array<Owner>;
+
+  constructor(private servicioOwner: OwnerService) { }
 
   ngOnInit() {
+
+    this.servicioOwner.getOwners().subscribe(listaOwners => {
+      console.log(listaOwners);
+
+      this.owners = listaOwners;
+    })
   }
 
 }
