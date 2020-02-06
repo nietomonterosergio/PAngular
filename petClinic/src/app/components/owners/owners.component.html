@@ -1,5 +1,5 @@
 <h1>Este es el componente owners</h1>
 
 <ul *ngFor="let owner of owners">
-    <li>{{owner.firstName}} {{owner.lastName}}</li>
+    <li><a routerLink="/owner/{{owner.id}}">{{owner.firstName}} {{owner.lastName}} - {{owner.city}}</a></li>
 </ul>

@@ -10,11 +10,22 @@ export class OwnerService {
   private urlServidor = "http://localhost/AJAX/petclinic/servicios.php";
   constructor(private http: HttpClient) { }
 
-  //Es una arrive que me devuelve la lsita de owners
+  //Esta peticion devuelve un arrive que me devuelve la lista de owners
   getOwners(){
-    var param = JSON.stringify({
+    var objOwners = JSON.stringify({
       accion: "ListarOwners"
     });
-    return this.http.post<Owner[]>(this.urlServidor, param);
+    return this.http.post<Owner[]>(this.urlServidor, objOwners);
+  }
+
+  
+  //Esta peticion devuelve el objeto de owner seleccionado
+  getOwnerId(id){
+
+    var objOwner = JSON.stringify({
+      accion: "ObtenerOwnerId",
+      id: id
+    });
+    return this.http.post<Owner>(this.urlServidor, objOwner);
   }
 }
