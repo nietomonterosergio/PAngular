@@ -21,12 +21,18 @@ export class OwnerDetailsComponent implements OnInit {
     this.owner = <Owner>{};
   }
     
-    
+   
 
   ngOnInit() {
     const ownerId = this.route.snapshot.params["id"];
     console.log(ownerId);
-    
+
+    //Obtener detalles del owner
+    this.http.getOwnerId(ownerId).subscribe(detallesOwner => {
+      console.log(detallesOwner);
+
+      this.owner = detallesOwner;
+    });
   }
 
 }
