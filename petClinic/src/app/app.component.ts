@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'petClinic';
+
+   public navBar = {
+    isNavbarCollapsed: true,
+    owners: {
+      dropdown: true
+    },
+    vets: {
+      dropdown: true
+    }
+  }
 }

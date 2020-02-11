@@ -1,0 +1,59 @@
+<h4>New Owner</h4>
+
+<div>
+    <p>Añadir nueva persona</p>
+
+    <form class="form-horizontal" #ownerForm="ngForm" (ngSubmit)="addPersona(ownerForm.value)">
+        <div class="form-group">
+            <label>FirstName: </label>
+            <input type="text" class="form-control" required [(ngModel)]="owner.firstName" name="firstName" #firstName="ngModel">
+            <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+                FirstName is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label>LastName: </label>
+            <input type="text" class="form-control" required [(ngModel)]="owner.lastName" name="lastName" #lastName="ngModel">
+            <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                LastName is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Address: </label>
+            <input type="text" class="form-control" required [(ngModel)]="owner.address" name="address" #address="ngModel">
+            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+                Address is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>city: </label>
+            <input type="text" class="form-control" required [(ngModel)]="owner.city" name="city" #city="ngModel">
+            <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+                Address is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>telephone: </label>
+            <input type="text" class="form-control" required [(ngModel)]="owner.telephone" name="telephone" #telephone="ngModel">
+            <div [hidden]="telephone.valid || telephone.pristine" class="alert alert-danger">
+                Telephone is required
+            </div>
+        </div>
+
+
+        <div>
+            <button class="btn btn-primary mr-3" type="submit" [disabled]="!ownerForm.valid">Añadir
+              </button>
+            <button type="button" class="btn btn-primary" routerLink="/owners">Cancel</button>
+            <!--
+                  Si queremos que mantenga los parámetros de la ruta sería así:
+                   <button type="button" class="btn btn-primary" routerLink="../">Cancelar</button>
+              -->
+        </div>
+
+    </form>
+
+</div>

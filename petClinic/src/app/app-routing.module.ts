@@ -4,6 +4,7 @@ import { HomeComponent} from "../app/components/home/home.component";
 import { OwnersComponent } from './components/owners/owners.component';
 import { VetsComponent } from './components/vets/vets.component';
 import { OwnerDetailsComponent } from './components/owner-details/owner-details.component';
+import { OwnerFormComponent } from './components/owner-form/owner-form.component';
 
 const routes: Routes = [
   {
@@ -11,17 +12,25 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    //Ruta lista owner principal
     path:"owners",
     component: OwnersComponent
   },
   {
-    path:"vets",
-    component: VetsComponent
-  },
-  {
+    //Ruta detalles owner
     path: "owner/:id",
     component: OwnerDetailsComponent
+  },
+  {
+    path: "ownerForm/:id",
+    component: OwnerFormComponent
+  },
+  {
+    path:"vets",
+    component: VetsComponent
   }
+ 
+  
 ];
 
 @NgModule({

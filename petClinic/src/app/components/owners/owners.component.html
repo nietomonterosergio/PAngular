@@ -1,5 +1,21 @@
 <h1>Este es el componente owners</h1>
 
-<ul *ngFor="let owner of owners">
-    <li><a routerLink="/owner/{{owner.id}}">{{owner.firstName}} {{owner.lastName}} - {{owner.city}}</a></li>
-</ul>
+<button routerLink="/ownerForm/-1" routerLinkActive="active" class="btn btn-dark">Añadir Persona</button>
+
+<table class=" my-4 table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Address</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let owner of owners">
+        <tr>
+            <td><a routerLink="/owner/{{owner.id}}" routerLinkActive="active">{{owner.firstName}} {{owner.lastName}}</a></td>
+            <td>{{owner.city}}</td>
+            <td>{{owner.address}}</td>
+
+        </tr>
+    </tbody>
+</table>

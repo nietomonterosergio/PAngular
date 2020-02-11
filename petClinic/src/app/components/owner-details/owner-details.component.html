@@ -1,30 +1,31 @@
 <h1>Owner Details</h1>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <td>{{owner.firstName}} {{owner.lastName}}</td>
-        </tr>
+<table class="table table-bordered">
+    <tr>
+        <th class="table-dark">Name</th>
+        <td>{{owner.firstName}} {{owner.lastName}}</td>
+    </tr>
 
-        <tr>
-            <th>Address</th>
-            <td>{{owner.address}}</td>
-        </tr>
+    <tr>
+        <th class="table-dark">City</th>
+        <td>{{owner.city}}</td>
+    </tr>
 
-        <tr>
-            <th>City</th>
-            <td>{{owner.city}}</td>
-        </tr>
+    <tr>
+        <th class="table-dark">Address</th>
+        <td>{{owner.address}}</td>
+    </tr>
 
-        <tr>
-            <th>Telephone</th>
-            {{owner.telephone}}
-        </tr>
+    <tr>
+        <th class="table-dark">Telephone</th>
+        <td>{{owner.telephone}}</td>
+    </tr>
 
-        <tr>
-            <th>Pets</th>
-            <td>{{owner.pets}}</td>
-        </tr>
-    </thead>
+    <tr>
+        <th class="table-dark"> Pets</th>
+        <td>{{owner.pets}}</td>
+    </tr>
 </table>
+
+<button>Modificar</button>
+<button>Eliminar</button>

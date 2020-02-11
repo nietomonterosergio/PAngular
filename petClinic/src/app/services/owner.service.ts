@@ -28,4 +28,13 @@ export class OwnerService {
     });
     return this.http.post<Owner>(this.urlServidor, objOwner);
   }
+
+  //Esta peticion inserta un owner y devuelve un booleano
+  addOwner(owner){
+    var objOwner = JSON.stringify({
+      accion: "AnadeOwner",
+      owner: owner
+    });
+    return this.http.post(this.urlServidor, objOwner);
+  }
 }
