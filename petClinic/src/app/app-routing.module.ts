@@ -22,6 +22,7 @@ const routes: Routes = [
     component: OwnerDetailsComponent
   },
   {
+    //Ruta formulario owner
     path: "ownerForm/:id",
     component: OwnerFormComponent
   },

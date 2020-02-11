@@ -15,6 +15,8 @@ export class OwnerDetailsComponent implements OnInit {
   //Atributos
   private owner: Owner;
 
+  private listado: string;
+
   constructor(private http: OwnerService, private ruta: Router, private route: ActivatedRoute) { 
 
     //Para que no me de un error de que este objeto no esta creado o es nulo hace falta inicializarlo y para no tener que poner todos los atributos de owner: 
@@ -30,9 +32,25 @@ export class OwnerDetailsComponent implements OnInit {
     //Obtener detalles del owner
     this.http.getOwnerId(ownerId).subscribe(detallesOwner => {
       console.log(detallesOwner);
-
+      
       this.owner = detallesOwner;
     });
+  }
+
+  //Borrar Owner
+
+  delOwner (){
+    console.log("Al pulsar eliminar");
+    console.log(this.owner.id);
+
+    if(confirm("¿Estás seguro de que quieres eliminar a "+this.owner.firstName+ " de "+this.owner.city)){
+      this.listado = "OK";
+
+      this.http.delOwner(this.owner.id, this.listado).subscribe(respuesta => {
+        this.ruta.navigate(["/owners"]);
+      });
+    }
+    
   }
 
 }

@@ -1,9 +1,8 @@
-<h4>New Owner</h4>
+<h4>{{texto}} Owner</h4>
 
 <div>
-    <p>Añadir nueva persona</p>
-
-    <form class="form-horizontal" #ownerForm="ngForm" (ngSubmit)="addPersona(ownerForm.value)">
+    
+    <form class="form-horizontal" #ownerForm="ngForm" (ngSubmit)="addModOwner(ownerForm.value)">
         <div class="form-group">
             <label>FirstName: </label>
             <input type="text" class="form-control" required [(ngModel)]="owner.firstName" name="firstName" #firstName="ngModel">
@@ -45,7 +44,7 @@
 
 
         <div>
-            <button class="btn btn-primary mr-3" type="submit" [disabled]="!ownerForm.valid">Añadir
+            <button class="btn btn-primary mr-3" type="submit" [disabled]="!ownerForm.valid">{{texto}}
               </button>
             <button type="button" class="btn btn-primary" routerLink="/owners">Cancel</button>
             <!--

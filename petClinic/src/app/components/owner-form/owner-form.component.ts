@@ -15,6 +15,8 @@ export class OwnerFormComponent implements OnInit {
   //Atributos
   private owner: Owner;
 
+  private texto: string;
+
   constructor(private http: OwnerService, private ruta: Router, private route: ActivatedRoute) { 
     this.owner = <Owner>{};
   }
@@ -23,16 +25,43 @@ export class OwnerFormComponent implements OnInit {
   //Funciones
   ngOnInit() {
 
+    const ownerId = this.route.snapshot.params["id"];
+    console.log(ownerId);
+    this.owner.id = ownerId;
+
+    if(this.owner.id == -1){
+      this.texto = "ADD"
+    }
+    else {
+      this.texto = "MOD";
+      this.http.getOwnerId(this.owner.id).subscribe(objOwner => {
+
+        //Asignamos el objeto owner con la respuesta de la peticon para que salga en el form
+        this.owner = objOwner;
+      });
+    }
   }
 
-  addPersona(){
-    console.log(this.owner);
+  addModOwner(){
+    console.log("Estamos en ADD-MOD");
+    console.log(this.owner.id);
 
-    this.http.addOwner(this.owner).subscribe(respuesta => {
-      console.log(respuesta);
+    if(this.owner.id == -1){
 
-      this.ruta.navigate(["/owner"]);
-    });
+      this.http.addOwner(this.owner).subscribe(respuesta => {
+        console.log(respuesta);
+  
+        this.ruta.navigate(["/owners"]);
+      });
+    }
+    else {
+      this.http.modOwner(this.owner).subscribe(respuesta => {
+        console.log(respuesta);
+
+        this.ruta.navigate(["/owners"]);
+      });
+    }
+    
   }
 
 }
