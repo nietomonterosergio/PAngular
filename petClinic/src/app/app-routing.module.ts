@@ -33,6 +33,11 @@ const routes: Routes = [
     component: PetFormComponent
   },
   {
+    //Ruta formulario pet mod
+    path: "petForm/:idPet",
+    component: PetFormComponent
+  },
+  {
     path:"vets",
     component: VetsComponent
   }

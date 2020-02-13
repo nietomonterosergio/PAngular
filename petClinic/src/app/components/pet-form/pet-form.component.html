@@ -3,7 +3,7 @@
 
 <div>
 
-    <form class="form-horizontal" #petForm="ngForm" (ngSubmit)="addPet(petForm.value)">
+    <form class="form-horizontal" #petForm="ngForm" (ngSubmit)="addModPet(petForm.value)">
         <div class="form-group">
             <label>Owner </label>
             <input type="text" class="form-control" value="{{owner.fistName}} {{owner.lastName}}" readonly>

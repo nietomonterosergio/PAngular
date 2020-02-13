@@ -20,8 +20,8 @@ export class PetFormComponent implements OnInit {
   private owner: Owner 
   private petType:  Pettype[]
 
+  private texto: string;
 
-  private nombreOwner: string
 
   constructor(private httpPet: PetService, private httpOwner: OwnerService, private httptype: PettypeService ,private ruta: Router, private route: ActivatedRoute) { 
 
@@ -30,18 +30,29 @@ export class PetFormComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //Debemos de tener en cuenta que para añadir debemos de pasarle el id del owner mientras que para modificar debemos de pasar el id del pet 
+    console.log("Estamos en el petForm")
     const ownerId = this.route.snapshot.params["idOwner"];
     console.log(ownerId);
 
-    //Tenemos que recoger los datos el owner para poder añadir una mascota porque necesita el id del owner
+    const petId = this.route.snapshot.params["idPet"];
+    console.log(petId);
+
+    if(ownerId){
+      //Tenemos que recoger los datos el owner para poder añadir una mascota porque necesita el id del owner
     this.httpOwner.getOwnerId(ownerId).subscribe(detallesOwner => {
       console.log("Owner para añadir pets");
       console.log(detallesOwner);
 
       this.owner = detallesOwner;
     });
+    }
+    else {
+      
+    }
 
-    //Recogemos los datos del petype para escribirlos
+    //Recogemos los datos del petype para escribirlos en el form
     this.httptype.getPettype().subscribe(pettypes => {
       console.log(pettypes);
 
@@ -50,7 +61,7 @@ export class PetFormComponent implements OnInit {
 
   }
 
-  addPet(){
+  addModPet(){
     console.log(this.pet);
     this.pet.owner = this.owner;
     this.httpPet.addPets(this.pet).subscribe(respuesta =>{
