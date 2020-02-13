@@ -14,6 +14,8 @@ export class PetFormComponent implements OnInit {
   //Atributos
   private pet: Pet
 
+  private nombreOwner: string
+
   constructor(private http: PetService, private ruta: Router, private route: ActivatedRoute) { 
 
     this.pet = <Pet>{};
@@ -25,6 +27,17 @@ export class PetFormComponent implements OnInit {
 
     const ownerName = this.route.snapshot.params["owner"];
     console.log(ownerName);
+
+    this.nombreOwner = ownerName;
+  }
+
+  addPet(){
+    console.log(this.pet);
+    this.http.addPets(this.pet).subscribe(respuesta =>{
+      console.log(respuesta);
+
+      //this.ruta.navigate(["/ownerForm/"])
+    });
   }
 
 }

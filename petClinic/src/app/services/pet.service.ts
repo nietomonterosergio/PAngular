@@ -19,4 +19,12 @@ export class PetService {
     });
     return this.http.post<Pet[]>(this.urlServidor, objPets);
   }
+
+  addPets(pet){
+    var objPetAdd = JSON.stringify({
+      accion: "AnadePet",
+      pet: pet
+    });
+    return this.http.post(this.urlServidor, objPetAdd);
+  }
 }
