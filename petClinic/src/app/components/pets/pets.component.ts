@@ -16,9 +16,20 @@ export class PetsComponent implements OnInit {
   private pets: Pet[];
 
 
-  constructor(private http: PetService, private ruta: Router, private route: ActivatedRoute) { }
+  constructor(private http: PetService, private ruta: Router, private route: ActivatedRoute) {
+   }
 
   ngOnInit() {
+    const ownerId = this.route.snapshot.params["id"];
+    console.log("Id Para pet");
+    console.log(ownerId);
+
+    this.http.getPets(ownerId).subscribe(detallesPet => {
+        console.log("Detalle del pet")
+        console.log(detallesPet);
+
+        this.pets = detallesPet;
+    });
   }
 
 }

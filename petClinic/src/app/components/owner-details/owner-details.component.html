@@ -1,10 +1,5 @@
 <h1 class="my-3">Owner Details</h1>
 
-<button routerLink="/owners" routerLinkActivate="active" class=" mx-4 btn btn-link"><--Back</button>
-<button routerLink="/ownerForm/{{owner.id}}" routerLinkActivate="active" class="btn btn-warning">Modificar</button>
-<button class=" mx-3 btn btn-danger" (click)="delOwner()">Eliminar</button>
-<button class="btn btn-dark">Add Pets</button>
-
 <table class=" my-4 table table-bordered">
     <tr>
         <th class="table-dark">Name</th>
@@ -31,6 +26,11 @@
         <td>{{owner.pets}}</td>
     </tr>
 </table>
+
+<button class=" mx-4 btn btn-link" routerLink="/owners" routerLinkActivate="active" ><--Back</button>
+<button class="btn btn-warning" routerLink="/ownerForm/{{owner.id}}" routerLinkActivate="active" >Edit Owner</button>
+<button class=" mx-3 btn btn-danger" (click)="delOwner()">Delete Owner</button>
+<button class="btn btn-dark" routerLink="/petForm/-1/{{owner.firstName}}" routerLinkActivate="active" >Add Pets</button>
 
 <!--Introducir el componente de mascotas-->
 <app-pets></app-pets>

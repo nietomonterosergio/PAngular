@@ -31,6 +31,7 @@ export class OwnerDetailsComponent implements OnInit {
 
     //Obtener detalles del owner
     this.http.getOwnerId(ownerId).subscribe(detallesOwner => {
+      console.log("Detalles del owner");
       console.log(detallesOwner);
       
       this.owner = detallesOwner;
