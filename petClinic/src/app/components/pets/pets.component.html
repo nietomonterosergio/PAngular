@@ -1,29 +1,30 @@
+<h1 class="my-4">
+    Pets and Visits</h1>
 
-<h1 class="my-4">Pets and Visits</h1>
 
-<table class="table table-sm table-borderless" *ngFor="let pet of pets">
-    <tr>
-        <th >Name</th>
-    </tr>
-    <tr>
-        <td>{{pet.name}}</td>
-    </tr>
-        
-    <tr>
-        <th>Birth Date</th>
-        
-    </tr>
-    <tr>
-        <td>{{pet.birthDate}}</td>
-    </tr>
+<div class="row ">
+    <div class="col-5">
+        <table class=" my-5 table" *ngFor="let pet of pets">
+            <tr>
+                <th>Name</th>
+                <td>{{pet.name}}</td>
+            </tr>
 
-    <tr>
-        <th>Type</th>
-    </tr>
-    <tr>
-        <td>{{pet.typeName}}</td>
-    </tr>
-</table>
+            <tr>
+                <th>Birth Date</th>
+                <td>{{pet.birthDate}}</td>
+            </tr>
+
+            <tr>
+                <th>Type</th>
+                <td>{{pet.typeName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
 
 <button class="btn btn-warning">Edit Pet</button>
 <button class="mx-4 btn btn-danger">Delete Pet</button>

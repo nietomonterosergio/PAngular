@@ -28,7 +28,8 @@ const routes: Routes = [
     component: OwnerFormComponent
   },
   {
-    path: "petForm/:id/:owner",
+    //Ruta formulario pet add
+    path: "petForm/:idOwner",
     component: PetFormComponent
   },
   {
