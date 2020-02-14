@@ -17,7 +17,7 @@ export class OwnersComponent implements OnInit {
   ngOnInit() {
 
     this.servicioOwner.getOwners().subscribe(listaOwners => {
-      console.log(listaOwners);
+      //console.log(listaOwners);
 
       this.owners = listaOwners;
     })

@@ -27,12 +27,12 @@ export class OwnerDetailsComponent implements OnInit {
 
   ngOnInit() {
     const ownerId = this.route.snapshot.params["id"];
-    console.log(ownerId);
+    //console.log(ownerId);
 
     //Obtener detalles del owner
-    this.http.getOwnerId(ownerId).subscribe(detallesOwner => {
-      console.log("Detalles del owner");
-      console.log(detallesOwner);
+    this.http.getOwnerId_Pets(ownerId).subscribe(detallesOwner => {
+      //console.log("Detalles del owner");
+      //console.log(detallesOwner);
       
       this.owner = detallesOwner;
     });
@@ -41,8 +41,8 @@ export class OwnerDetailsComponent implements OnInit {
   //Borrar Owner
 
   delOwner (){
-    console.log("Al pulsar eliminar");
-    console.log(this.owner.id);
+    //console.log("Al pulsar eliminar");
+    //console.log(this.owner.id);
 
     if(confirm("¿Estás seguro de que quieres eliminar a "+this.owner.firstName+ " de "+this.owner.city)){
       this.listado = "OK";

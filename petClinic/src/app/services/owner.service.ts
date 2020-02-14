@@ -29,6 +29,15 @@ export class OwnerService {
     return this.http.post<Owner>(this.urlServidor, objOwner);
   }
 
+  //Esta petición devuelve un objeto del owner y los pets en vez de string como array de objetos
+  getOwnerId_Pets(id){
+    var objOwner_Pets = JSON.stringify({
+      accion: "ObtenerOwnerId_Pets",
+      id: id
+    });
+    return this.http.post<Owner>(this.urlServidor, objOwner_Pets);
+  }
+
   //Esta peticion inserta un owner y devuelve un objeto con atributo result "OK"
   addOwner(owner){
     var objOwnerAdd = JSON.stringify({

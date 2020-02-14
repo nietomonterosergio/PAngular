@@ -1,9 +1,5 @@
-<h1 class="my-4">
-    Pets and Visits</h1>
-
-
-<div class="row " *ngFor="let pet of pets">
-    <div class="col-5" >
+<div class="row ">
+    <div class="col-5">
         <table class=" mt-5 table">
             <tr>
                 <th>Name</th>
@@ -21,7 +17,7 @@
             </tr>
         </table>
 
-        <button class="btn btn-warning">Edit Pet</button>
+        <button class="btn btn-warning" routerLink="/petForm/pet.id">Edit Pet</button>
         <button class="mx-4 btn btn-danger">Delete Pet</button>
         <button class=" btn btn-dark">Add Visit</button>
     </div>

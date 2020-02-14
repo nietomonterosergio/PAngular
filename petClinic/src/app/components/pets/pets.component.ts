@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PetService } from "../../services/pet.service";
 import { Pet } from "../../models/pet";
+
+
 
 //Para poder navegar (routing) de forma progrmática:
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,23 +15,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PetsComponent implements OnInit {
 
   //Atributos
-  private pets: Pet[];
+
+  //Debemos de incluir un parámetro de entrada para recoger el pet y de esta manera poder escribirlo en el html
+  @Input() pet: Pet;
 
 
   constructor(private http: PetService, private ruta: Router, private route: ActivatedRoute) {
+      
    }
 
   ngOnInit() {
-    const ownerId = this.route.snapshot.params["id"];
-    console.log("Id Para pet");
-    console.log(ownerId);
 
-    this.http.getPets(ownerId).subscribe(detallesPet => {
-        console.log("Detalle del pet")
-        console.log(detallesPet);
-
-        this.pets = detallesPet;
-    });
   }
 
 }

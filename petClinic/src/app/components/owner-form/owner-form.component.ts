@@ -26,7 +26,7 @@ export class OwnerFormComponent implements OnInit {
   ngOnInit() {
 
     const ownerId = this.route.snapshot.params["id"];
-    console.log(ownerId);
+    //console.log(ownerId);
     this.owner.id = ownerId;
 
     if(this.owner.id == -1){
@@ -43,8 +43,8 @@ export class OwnerFormComponent implements OnInit {
   }
 
   addModOwner(){
-    console.log("Estamos en ADD-MOD");
-    console.log(this.owner.id);
+    //console.log("Estamos en ADD-MOD");
+    //console.log(this.owner.id);
 
     if(this.owner.id == -1){
 
@@ -56,7 +56,7 @@ export class OwnerFormComponent implements OnInit {
     }
     else {
       this.http.modOwner(this.owner).subscribe(respuesta => {
-        console.log(respuesta);
+        //console.log(respuesta);
 
         this.ruta.navigate(["/owners"]);
       });

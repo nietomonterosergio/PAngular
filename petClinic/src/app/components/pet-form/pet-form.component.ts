@@ -25,6 +25,7 @@ export class PetFormComponent implements OnInit {
 
   constructor(private httpPet: PetService, private httpOwner: OwnerService, private httptype: PettypeService ,private ruta: Router, private route: ActivatedRoute) { 
 
+    //Se deben inicializar cuando vamos a escribir estos obetos en el html, porque si no se pone a null y da un error
     this.pet = <Pet>{};
     this.owner = <Owner>{};
   }
@@ -49,7 +50,11 @@ export class PetFormComponent implements OnInit {
     });
     }
     else {
-      
+      this.httpPet.getPetId(petId).subscribe(detallesPet => {
+        console.log("Pet para modificar");
+        console.log(detallesPet);
+
+      });
     }
 
     //Recogemos los datos del petype para escribirlos en el form

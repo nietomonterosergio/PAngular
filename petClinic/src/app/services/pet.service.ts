@@ -12,6 +12,8 @@ export class PetService {
   constructor(private http: HttpClient) { }
 
   //Peticiones
+
+  //Obetener la lista de pets
   getPets(idOwner){
     var objPets = JSON.stringify({
       accion: "ListarPetsOwnerId",
@@ -20,11 +22,28 @@ export class PetService {
     return this.http.post<Pet[]>(this.urlServidor, objPets);
   }
 
+  //Obtener un pet mediante su id
+  getPetId(idPet){
+    var objPetId = JSON.stringify({
+      accion: "ObtenerPetId",
+      id: idPet
+    });
+    return this.http.post(this.urlServidor, objPetId);
+  }
+
   addPets(pet){
     var objPetAdd = JSON.stringify({
       accion: "AnadePet",
       pet: pet
     });
     return this.http.post(this.urlServidor, objPetAdd);
+  }
+
+  modPets(pet){
+    var objPetMod = JSON.stringify({
+      accion: "ModificaPet",
+      pet: pet
+    });
+    return this.http.post(this.urlServidor, objPetMod);
   }
 }
