@@ -13,7 +13,7 @@ export class PetService {
 
   //Peticiones
 
-  //Obetener la lista de pets
+  //Obetener la lista de pets, lo devuelve como string 
   getPets(idOwner){
     var objPets = JSON.stringify({
       accion: "ListarPetsOwnerId",
@@ -22,7 +22,7 @@ export class PetService {
     return this.http.post<Pet[]>(this.urlServidor, objPets);
   }
 
-  //Obtener un pet mediante su id
+  //Obtener un pet mediante su id, lo devueve como array de pet
   getPetId(idPet){
     var objPetId = JSON.stringify({
       accion: "ObtenerPetId",
