@@ -28,7 +28,7 @@ export class PetService {
       accion: "ObtenerPetId",
       id: idPet
     });
-    return this.http.post(this.urlServidor, objPetId);
+    return this.http.post<Pet>(this.urlServidor, objPetId);
   }
 
   addPets(pet){
@@ -36,7 +36,7 @@ export class PetService {
       accion: "AnadePet",
       pet: pet
     });
-    return this.http.post(this.urlServidor, objPetAdd);
+    return this.http.post<any>(this.urlServidor, objPetAdd);
   }
 
   modPets(pet){
@@ -44,6 +44,6 @@ export class PetService {
       accion: "ModificaPet",
       pet: pet
     });
-    return this.http.post(this.urlServidor, objPetMod);
+    return this.http.post<any>(this.urlServidor, objPetMod);
   }
 }

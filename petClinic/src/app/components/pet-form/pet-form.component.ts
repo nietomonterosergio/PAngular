@@ -17,13 +17,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PetFormComponent implements OnInit {
   //Atributos
   private pet: Pet
-  private owner: Owner 
-  private petType:  Pettype[]
+  private owner: Owner
+  private petType: Pettype[]
+
+
 
   private texto: string;
+  private globalOwnerId: number;
+  private globalPetId: number;
 
 
-  constructor(private httpPet: PetService, private httpOwner: OwnerService, private httptype: PettypeService ,private ruta: Router, private route: ActivatedRoute) { 
+  constructor(private httpPet: PetService, private httpOwner: OwnerService, private httptype: PettypeService, private ruta: Router, private route: ActivatedRoute) {
 
     //Se deben inicializar cuando vamos a escribir estos obetos en el html, porque si no se pone a null y da un error
     this.pet = <Pet>{};
@@ -35,46 +39,66 @@ export class PetFormComponent implements OnInit {
     //Debemos de tener en cuenta que para añadir debemos de pasarle el id del owner mientras que para modificar debemos de pasar el id del pet 
     console.log("Estamos en el petForm")
     const ownerId = this.route.snapshot.params["idOwner"];
-    console.log(ownerId);
+    console.log("OwnerId " + ownerId);
+
+    this.globalOwnerId = ownerId;
 
     const petId = this.route.snapshot.params["idPet"];
-    console.log(petId);
+    console.log("OwnerPet " + petId);
 
-    if(ownerId){
+    this.globalPetId = petId;
+
+    if (ownerId) {
       //Tenemos que recoger los datos el owner para poder añadir una mascota porque necesita el id del owner
-    this.httpOwner.getOwnerId(ownerId).subscribe(detallesOwner => {
-      console.log("Owner para añadir pets");
-      console.log(detallesOwner);
+      this.httpOwner.getOwnerId(ownerId).subscribe(detallesOwner => {
+        console.log("Owner para añadir pets");
+        console.log(detallesOwner);
+        this.texto = "ADD";
 
-      this.owner = detallesOwner;
-    });
+        this.owner = detallesOwner;
+      });
     }
-    else {
+    if (petId) {
+
       this.httpPet.getPetId(petId).subscribe(detallesPet => {
         console.log("Pet para modificar");
         console.log(detallesPet);
+
+        this.pet = detallesPet;
+        this.owner = detallesPet.owner;
+        this.texto = "Edit";
+
+
 
       });
     }
 
     //Recogemos los datos del petype para escribirlos en el form
     this.httptype.getPettype().subscribe(pettypes => {
-      console.log(pettypes);
+      //console.log(pettypes);
 
       this.petType = pettypes;
     });
 
   }
 
-  addModPet(){
+  addModPet() {
     console.log(this.pet);
-    this.pet.owner = this.owner;
-    this.httpPet.addPets(this.pet).subscribe(respuesta =>{
-      
-      console.log(respuesta);
 
-     this.ruta.navigate(["/owner/" + this.owner.id])
-    });
+    if (this.globalOwnerId) {
+      this.pet.owner = this.owner;
+      this.httpPet.addPets(this.pet).subscribe(respuesta => {
+        console.log(respuesta);
+        this.ruta.navigate(["/owner/" + this.owner.id])
+      });
+    }
+    if(this.globalPetId){
+      this.httpPet.modPets(this.pet).subscribe(respuesta => {
+        console.log(respuesta);
+        this.ruta.navigate(["/owner/" + this.owner.id])
+      });
+    }
+
   }
 
 }

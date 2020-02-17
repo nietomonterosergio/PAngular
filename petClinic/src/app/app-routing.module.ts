@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     //Ruta formulario pet mod
-    path: "petForm/:idPet",
+    path: "petForm-mod/:idPet",
     component: PetFormComponent
   },
   {

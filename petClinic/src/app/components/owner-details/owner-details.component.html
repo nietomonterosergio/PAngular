@@ -21,6 +21,7 @@
         <td>{{owner.telephone}}</td>
     </tr>
 
+
 </table>
 
 <button class=" mx-4 btn btn-link" routerLink="/owners" routerLinkActivate="active"><--Back</button>
@@ -29,7 +30,7 @@
 <button class="btn btn-dark" routerLink="/petForm/{{owner.id}}" routerLinkActivate="active">Add Pets</button>
 
 <!--Introducir el componente de mascotas, lo recomendable repetir el componene y pasamos un objeto pet y despùés se repetirá-->
-<div>
+<div *ngIf="owner.pets">
     <h1 class="mt-5">Pets and Visits</h1>
     <app-pets *ngFor="let pet of owner.pets" [pet]="pet"></app-pets>
 </div>
