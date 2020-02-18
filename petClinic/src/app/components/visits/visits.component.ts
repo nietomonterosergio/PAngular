@@ -23,7 +23,7 @@ export class VisitsComponent implements OnInit {
   
   
   ngOnInit() {
-    console.log(this.visits);
+    //console.log(this.visits);
   }
 
 }

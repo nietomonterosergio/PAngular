@@ -1,0 +1,37 @@
+<h1>{{texto}} Pet</h1>
+
+
+<div>
+
+    <form class="form-horizontal" #VisitForm="ngForm" (ngSubmit)="addModVisit(visitForm.value)">
+        <div class="form-group">
+            <label>Pet</label>
+            <input type="text" class="form-control" value="{{pet.name}}" readonly>
+
+        </div>
+        <div class="form-group">
+            <label>Date: </label>
+            <input type="date" class="form-control" required [(ngModel)]="visit.visitDate" name="visitDate" #visitDate="ngModel">
+            <div [hidden]="visitDate.valid || visitDate.pristine" class="alert alert-danger">
+                Date is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description: </label>
+            <input type="text" class="form-control" required [(ngModel)]="visit.description" name="description" #description="ngModel">
+            <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+                Description is required
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary mr-3" type="submit" [disabled]="!visitForm.valid">{{texto}}
+              </button>
+            <button type="button" class="btn btn-primary">Cancel</button>
+
+        </div>
+
+    </form>
+
+</div>

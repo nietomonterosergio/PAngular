@@ -22,7 +22,7 @@ export class PetService {
     return this.http.post<Pet[]>(this.urlServidor, objPets);
   }
 
-  //Obtener un pet mediante su id, lo devueve como array de pet
+  //Obtener un pet mediante su id, lo devuelve como un objeto
   getPetId(idPet){
     var objPetId = JSON.stringify({
       accion: "ObtenerPetId",

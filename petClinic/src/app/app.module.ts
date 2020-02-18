@@ -14,6 +14,7 @@ import { NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { PetsComponent } from './components/pets/pets.component';
 import { PetFormComponent } from './components/pet-form/pet-form.component';
 import { VisitsComponent } from './components/visits/visits.component';
+import { VisitFormComponent } from './components/visit-form/visit-form.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { VisitsComponent } from './components/visits/visits.component';
     OwnerFormComponent,
     PetsComponent,
     PetFormComponent,
-    VisitsComponent
+    VisitsComponent,
+    VisitFormComponent
   ],
   imports: [
     BrowserModule,

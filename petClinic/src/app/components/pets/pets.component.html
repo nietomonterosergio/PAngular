@@ -17,9 +17,12 @@
             </tr>
         </table>
 
-        <button class="btn btn-warning" routerLink="/petForm-mod/{{pet.id}}">Edit Pet</button>
+        <button class="btn btn-warning" routerLink="/petForm-mod/{{pet.id}}" routerLinkActivate="active">Edit Pet</button>
         <button class="mx-4 btn btn-danger" (click)="deletePet(pet.id, pet.name)">Delete Pet</button>
-        <button class=" btn btn-dark">Add Visit</button>
+
+        <button class=" btn btn-dark" routerLink="/visitForm/{{pet.id}}">Add Visit</button>
+        <!-- <button class=" btn btn-dark" routerLink="/visitForm/{{pet}}">Add Visit</button> -->
+
     </div>
 
     <!--En este caso le pasamos el arrive entero de visitas para escribirlo en la tabla-->
