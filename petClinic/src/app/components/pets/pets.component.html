@@ -1,5 +1,5 @@
 <div class="row ">
-    <div class="col-5">
+    <div class="col-5 mx-5">
         <table class=" mt-5 table">
             <tr>
                 <th>Name</th>
@@ -18,8 +18,11 @@
         </table>
 
         <button class="btn btn-warning" routerLink="/petForm-mod/{{pet.id}}">Edit Pet</button>
-        <button class="mx-4 btn btn-danger">Delete Pet</button>
+        <button class="mx-4 btn btn-danger" (click)="deletePet(pet.id, pet.name)">Delete Pet</button>
         <button class=" btn btn-dark">Add Visit</button>
     </div>
+
+    <!--En este caso le pasamos el arrive entero de visitas para escribirlo en la tabla-->
+    <app-visits [visits]="pet.visits"></app-visits>
 
 </div>

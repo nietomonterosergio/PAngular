@@ -1,0 +1,22 @@
+<table class=" mt-5 table">
+    <thead class="table-dark">
+        <tr>
+            <th>Date</th>
+            <th>Descrition</th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+    <tr *ngFor="let visit of visits">
+        <td>{{visit.visitDate}}</td>
+        <td> {{visit.description}} </td>
+        <td>
+            <button class=" mx-3 btn btn-danger">DEL</button>
+            <button class="btn btn-warning">MOD</button>
+        </td>
+    </tr>
+    <tbody>
+
+    </tbody>
+
+</table>

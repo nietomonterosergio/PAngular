@@ -46,4 +46,12 @@ export class PetService {
     });
     return this.http.post<any>(this.urlServidor, objPetMod);
   }
+
+  delPets(idPet){
+    var objPetDel = JSON.stringify({
+      accion: "BorraPet",
+      id: idPet
+    });
+    return this.http.post<any>(this.urlServidor, objPetDel);
+  }
 }

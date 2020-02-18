@@ -39,7 +39,6 @@ export class OwnerDetailsComponent implements OnInit {
   }
 
   //Borrar Owner
-
   delOwner (){
     //console.log("Al pulsar eliminar");
     //console.log(this.owner.id);
@@ -52,6 +51,15 @@ export class OwnerDetailsComponent implements OnInit {
       });
     }
     
+  }
+
+  emitirRespuesta(evento){
+    this.http.getOwnerId_Pets(this.owner.id).subscribe(detallesOwner => {
+      // console.log("Detalles del owner");
+      // console.log(detallesOwner);
+      
+      this.owner = detallesOwner;
+    });
   }
 
 }
