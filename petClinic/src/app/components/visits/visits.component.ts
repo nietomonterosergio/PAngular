@@ -19,9 +19,6 @@ export class VisitsComponent implements OnInit {
     this.visits = <Visit[]>{}
   }
 
-  
-  
-  
   ngOnInit() {
     //console.log(this.visits);
   }

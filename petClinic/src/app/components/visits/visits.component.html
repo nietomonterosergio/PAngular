@@ -8,11 +8,11 @@
 
     </thead>
     <tr *ngFor="let visit of visits">
-        <td>{{visit.visitDate}}</td>
+        <td>{{visit.visitDate |date: "dd-MM-yyyy"}}</td>
         <td> {{visit.description}} </td>
         <td>
             <button class=" mx-3 btn btn-danger">DEL</button>
-            <button class="btn btn-warning">MOD</button>
+            <button class="btn btn-warning" routerLink="/visitForm/visit.id">MOD</button>
         </td>
     </tr>
     <tbody>

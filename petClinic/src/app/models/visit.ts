@@ -1,7 +1,7 @@
 
 export interface Visit {
     id: number;
-    pet_id: number;
+    petId: number;
     visitDate: Date;
     description: string;
 }

@@ -45,6 +45,11 @@ const routes: Routes = [
 
   },
   {
+    //Ruta formulario visit mod
+    path: "visitForm/:idVisit",
+    component: VisitFormComponent
+  },
+  {
     path:"vets",
     component: VetsComponent
   }

@@ -26,6 +26,6 @@
     </div>
 
     <!--En este caso le pasamos el arrive entero de visitas para escribirlo en la tabla-->
-    <app-visits [visits]="pet.visits"></app-visits>
+    <app-visits *ngIf="pet.visits.length > 0" [visits]="pet.visits"></app-visits>
 
 </div>

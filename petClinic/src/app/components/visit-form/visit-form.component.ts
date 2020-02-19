@@ -22,12 +22,14 @@ export class VisitFormComponent implements OnInit {
   private visit: Visit;
 
 
+  private vacio: boolean;
   private texto: string;
   private globalPetId: number;
   private globalVisitId: number;
 
   constructor(private httpVisit: VisitService, private httpPet: PetService, private ruta: Router, private route: ActivatedRoute) {
 
+    this.vacio = false;
     this.pet = <Pet>{};
     this.visit = <Visit>{};
 
@@ -37,6 +39,9 @@ export class VisitFormComponent implements OnInit {
     const petId = this.route.snapshot.params["idPet"];
     console.log("idPet " + petId);
 
+    const visitId = this.route.snapshot.params["idVisit"];
+    console.log("idVisit" + visitId);
+
 
     if (petId) {
       console.log("Vamos a añadir");
@@ -44,30 +49,50 @@ export class VisitFormComponent implements OnInit {
       this.globalPetId = petId;
 
       //Obtener el pet para escribir en el form el nombre y pasarle el id que necesita para añadir
-      this.obtenerPet(petId);
+      this.obtenerPet(petId); 
+    }
+
+    if (visitId) {
+      console.log("vamos a modificar");
+      this.texto = "MOD";
+      this.globalVisitId = visitId;
+
+      //Escribimos sus datos en el form
       
     }
+
 
   }
 
   obtenerPet(id) {
     this.httpPet.getPetId(id).subscribe(objPet => {
       console.log("Resp");
-      console.log(objPet);
-      
+      console.log(objPet);  
       this.pet = objPet;
+
+      this.vacio = true;
     });
   }
 
   addModVisit() {
-    console.log(this.pet);
-    // if(this.globalPetId) {
-    //   this.httpVisit.addVisit(this.visit).subscribe(respuesta => {
-    //     console.log(respuesta);
-    //     this.ruta.navigate(["/owners"]);
-    //   })
-    // }
 
+    //console.log(this.pet);
+    //console.log(this.visit);
+    
+    if(this.globalPetId) {
+      //Hay que pasarle el id del petId para que pueda hacer la peticion añadir correctamente
+      this.visit.petId = this.globalPetId;
+
+      this.httpVisit.addVisit(this.visit).subscribe(respuesta => {
+        console.log(respuesta);
+        this.ruta.navigate(["/owner/" + this.pet.owner.id]);
+      })
+    }
+
+    if(this.globalVisitId){
+      //Hay que pasarle el id de visita para que pueda hacer la petición modificar  correctamente
+
+    }
   }
 
 }
