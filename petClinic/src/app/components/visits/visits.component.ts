@@ -23,4 +23,16 @@ export class VisitsComponent implements OnInit {
     //console.log(this.visits);
   }
 
+  borrarVisit(id){
+    console.log("Vamos a borrar");
+    console.log(id);
+
+    if(confirm("¿Quieres borrar la visita?")){
+      this.http.delVisit(id).subscribe( resp => {
+        console.log(resp);
+      });
+    }
+
+  }
+
 }

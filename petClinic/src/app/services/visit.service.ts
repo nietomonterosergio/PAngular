@@ -20,4 +20,17 @@ export class VisitService {
     return this.http.post<any>(this.urlServidor, objVisitAdd);
   }
 
+  modVisit(visit: Visit){
+
+  }
+
+  delVisit(idVisit){
+    var objVisitDel = JSON.stringify({
+      accion: "BorraVisit",
+      id: idVisit 
+    });
+    return this.http.post<any>(this.urlServidor, objVisitDel);
+  }
+
+
 }

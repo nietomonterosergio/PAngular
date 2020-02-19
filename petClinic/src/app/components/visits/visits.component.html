@@ -11,7 +11,7 @@
         <td>{{visit.visitDate |date: "dd-MM-yyyy"}}</td>
         <td> {{visit.description}} </td>
         <td>
-            <button class=" mx-3 btn btn-danger">DEL</button>
+            <button class=" mx-3 btn btn-danger" (click)="borrarVisit(petId)">DEL</button>
             <button class="btn btn-warning" routerLink="/visitForm/visit.id">MOD</button>
         </td>
     </tr>
