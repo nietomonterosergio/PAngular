@@ -26,7 +26,7 @@ export class PetsComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.pet);
+    //console.log(this.pet);
   }
 
   deletePet(id, name) {

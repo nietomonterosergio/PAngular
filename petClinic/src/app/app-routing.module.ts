@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     //Ruta formulario visit mod
-    path: "visitForm/:idVisit",
+    path: "visitForm-mod/:idVisit",
     component: VisitFormComponent
   },
   {

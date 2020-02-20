@@ -12,7 +12,7 @@
         <td> {{visit.description}} </td>
         <td>
             <button class=" mx-3 btn btn-danger" (click)="borrarVisit(petId)">DEL</button>
-            <button class="btn btn-warning" routerLink="/visitForm/visit.id">MOD</button>
+            <button class="btn btn-warning" routerLink="/visitForm-mod/{{visit.id}}">MOD</button>
         </td>
     </tr>
     <tbody>

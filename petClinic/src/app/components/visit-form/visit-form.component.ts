@@ -49,7 +49,14 @@ export class VisitFormComponent implements OnInit {
       this.globalPetId = petId;
 
       //Obtener el pet para escribir en el form el nombre y pasarle el id que necesita para añadir
-      this.obtenerPet(petId); 
+      this.httpPet.getPetId(petId).subscribe(objPet => {
+        console.log("Resp");
+        console.log(objPet);  
+        this.pet = objPet;
+  
+        //Para escribir la tabla de información inicial
+        this.vacio = true;
+      });
     }
 
     if (visitId) {
@@ -57,21 +64,22 @@ export class VisitFormComponent implements OnInit {
       this.texto = "MOD";
       this.globalVisitId = visitId;
 
-      //Escribimos sus datos en el form
-      
+      //Recogemos el objeto visita y lo escribimos sus datos en el form
+      this.httpVisit.obtenerVisitaId(visitId).subscribe(objVisit => {
+        console.log(objVisit);
+        this.visit = objVisit;
+    
+        //Para que se vuelva a escribir la informacion de la tabla en el form, nos acordamos que todo objeto visita tiene dentro el objeto pet
+        this.pet = this.visit["pet"];
+        this.globalPetId = this.visit.id;
+
+        //Para escribir la tabla de información inicial
+        this.vacio = true;
+        
+  
+      });      
     }
 
-
-  }
-
-  obtenerPet(id) {
-    this.httpPet.getPetId(id).subscribe(objPet => {
-      console.log("Resp");
-      console.log(objPet);  
-      this.pet = objPet;
-
-      this.vacio = true;
-    });
   }
 
   addModVisit() {
@@ -84,14 +92,24 @@ export class VisitFormComponent implements OnInit {
       this.visit.petId = this.globalPetId;
 
       this.httpVisit.addVisit(this.visit).subscribe(respuesta => {
+        console.log("Resp add");
         console.log(respuesta);
         this.ruta.navigate(["/owner/" + this.pet.owner.id]);
       })
     }
-
+    
     if(this.globalVisitId){
-      //Hay que pasarle el id de visita para que pueda hacer la petición modificar  correctamente
 
+      //Hay que pasarle el id del petId para que pueda hacer la peticion modificar correctamente
+      
+      this.visit.petId = this.globalPetId;
+      console.log(this.visit);
+
+      //Hay que pasarle el id de visita para que pueda hacer la petición modificar  correctamente
+      this.httpVisit.modVisit(this.visit).subscribe(respuesta => {
+        console.log(respuesta);
+        this.ruta.navigate(["/owner/" + this.pet.owner.id]);
+      });
     }
   }
 

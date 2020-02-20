@@ -12,6 +12,14 @@ export class VisitService {
   constructor(private http: HttpClient) { }
 
   //Peticiones
+  obtenerVisitaId(idVisit){
+    var objVisit = JSON.stringify({
+      accion: "ObtenerVisitId",
+      id: idVisit
+    });
+    return this.http.post<Visit>(this.urlServidor, objVisit);
+  }
+
   addVisit(visit: Visit){
     var objVisitAdd = JSON.stringify({
       accion: "AnadeVisit",
@@ -21,7 +29,11 @@ export class VisitService {
   }
 
   modVisit(visit: Visit){
-
+    var objVisitMod = JSON.stringify({
+      accion: "ModificaVisit",
+      visit: visit
+    });
+    return this.http.post<any>(this.urlServidor, objVisitMod);
   }
 
   delVisit(idVisit){
