@@ -8,6 +8,8 @@ import { OwnerFormComponent } from './components/owner-form/owner-form.component
 import { PetFormComponent } from './components/pet-form/pet-form.component';
 import { VisitFormComponent } from './components/visit-form/visit-form.component';
 import { VetFormComponent } from './components/vet-form/vet-form.component';
+import { SpecialtiesComponent } from './components/specialties/specialties.component';
+import { VetDetailsComponent } from './components/vet-details/vet-details.component';
 
 const routes: Routes = [
   {
@@ -55,9 +57,15 @@ const routes: Routes = [
     component: VetsComponent
   },
   {
+    path:"vet-details/:idVet",
+    component: VetDetailsComponent
+  },
+  {
+    //Ruta formulario vet add
     path:"vet-form/:idVet",
     component: VetFormComponent
   }
+  
  
   
 ];

@@ -1,26 +1,23 @@
 <div class="row">
-    <div class="col mx-5">
+    <div class="col">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
                     <th>Specialties</th>
-                    <th>Action</th>
                 </tr>
 
             </thead>
 
             <tbody>
                 <tr *ngFor="let vet of vets">
-                    <td>{{vet.firstName}} {{vet.lastName}}</td>
+                    <td><a routerLink="/vet-details/{{vet.id}}">{{vet.firstName}} {{vet.lastName}}</a></td>
                     <td>
-                        <a *ngIf="vet.specialties.length > 0" routerLink="/specialties">Specialties</a>
+                        <ul class="list-group list-group-flush" *ngFor="let specialtie of vet.specialties">
+                            <li class="list-group-item"> {{specialtie.name}} </li>
+                        </ul>
                     </td>
-                    <td>
-                        <button class="btn">Add Specialties</button>
-                        <button class="btn">Edit Vet</button>
-                        <button class="btn">Del Vet</button>
-                    </td>
+                    
                 </tr>
             </tbody>
         </table>

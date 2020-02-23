@@ -16,12 +16,20 @@ export class VetService {
 
   //Métodos y peticiones
 
-  //Este método recibe un modelo vet (intw)
+  //Este método devuleve un arrive de objetos vet
   getVets () {
     var param = JSON.stringify({
       accion: "ListarVets"
     });
     return this.http.post<Vet[]>(this.urlServidor, param);
+  }
+
+  getVetId(idVet){
+    var objVet = JSON.stringify({
+      accion: "ObtenerVetId",
+      id: idVet
+    });
+    return this.http.post<Vet>(this.urlServidor, objVet);
   }
   
 }

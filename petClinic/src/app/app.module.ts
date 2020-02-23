@@ -17,6 +17,7 @@ import { VisitsComponent } from './components/visits/visits.component';
 import { VisitFormComponent } from './components/visit-form/visit-form.component';
 import { SpecialtiesComponent } from './components/specialties/specialties.component';
 import { VetFormComponent } from './components/vet-form/vet-form.component';
+import { VetDetailsComponent } from './components/vet-details/vet-details.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { VetFormComponent } from './components/vet-form/vet-form.component';
     VisitsComponent,
     VisitFormComponent,
     SpecialtiesComponent,
-    VetFormComponent
+    VetFormComponent,
+    VetDetailsComponent
   ],
   imports: [
     BrowserModule,

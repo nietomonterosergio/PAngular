@@ -4,5 +4,5 @@ export interface Vet {
     id: number;
     firstName: string;
     lastName: string;
-    specialties: Specialties;
+    specialties: Specialties[];
 }
