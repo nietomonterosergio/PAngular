@@ -36,7 +36,7 @@ export class OwnerFormComponent implements OnInit {
       this.texto = "MOD";
       this.http.getOwnerId(this.owner.id).subscribe(objOwner => {
 
-        //Asignamos el objeto owner con la respuesta de la peticon para que salga en el form
+        //Asignamos el objeto owner con la respuesta de la petición para que salga en el form
         this.owner = objOwner;
       });
     }

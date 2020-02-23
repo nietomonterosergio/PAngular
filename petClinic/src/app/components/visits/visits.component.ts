@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { VisitService } from "../../services/visit.service";
 import { Visit } from "../../models/visit";
 
@@ -13,23 +13,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class VisitsComponent implements OnInit {
 
   @Input() visits: Visit[];
+  @Input() ownerId: number;
+
+  @Output() borraVisit = new EventEmitter;
 
   constructor(private http: VisitService, private ruta: Router, private route: ActivatedRoute) { 
 
-    this.visits = <Visit[]>{}
+    //this.visits = <Visit[]>{}
   }
 
   ngOnInit() {
     //console.log(this.visits);
   }
 
-  borrarVisit(id){
+  deleteVisit(id){
     console.log("Vamos a borrar");
     console.log(id);
 
     if(confirm("¿Quieres borrar la visita?")){
+      
       this.http.delVisit(id).subscribe( resp => {
         console.log(resp);
+        this.borraVisit.emit(resp);
       });
     }
 

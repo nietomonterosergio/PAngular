@@ -30,18 +30,22 @@ export class PetsComponent implements OnInit {
   }
 
   deletePet(id, name) {
-    // console.log("Estamos en delete Pet");
-    // console.log("Pet id "+id);
+    console.log("Estamos en delete Pet");
+    console.log("Pet id "+id);
 
     if(confirm("¿Quieres borrar al pet "+name+ "?")){
 
-      
       this.http.delPets(id).subscribe(respuesta => {
-          //console.log(respuesta);
-        this.borrarPet.emit(respuesta);
+          console.log(respuesta);
+          this.borrarPet.emit(respuesta);
       });
     }
-    
+  }
+
+  actulizarVisitas(evento){
+    this.http.ListarVisitsPets(this.pet.id).subscribe(resp => {
+      this.pet.visits = resp;
+    });
   }
 
 }

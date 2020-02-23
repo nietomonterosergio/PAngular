@@ -7,6 +7,7 @@ import { OwnerDetailsComponent } from './components/owner-details/owner-details.
 import { OwnerFormComponent } from './components/owner-form/owner-form.component';
 import { PetFormComponent } from './components/pet-form/pet-form.component';
 import { VisitFormComponent } from './components/visit-form/visit-form.component';
+import { VetFormComponent } from './components/vet-form/vet-form.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path:"vets",
     component: VetsComponent
+  },
+  {
+    path:"vet-form/:idVet",
+    component: VetFormComponent
   }
  
   

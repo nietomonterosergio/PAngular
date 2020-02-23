@@ -1,6 +1,30 @@
-<h1>Este es el componente vets</h1>
+<div class="row">
+    <div class="col mx-5">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Specialties</th>
+                    <th>Action</th>
+                </tr>
 
-<ul ng *ngFor="let vet of vets">
+            </thead>
 
-    <li>{{vet.firstName}} {{vet.lastName}}</li>
-</ul>
+            <tbody>
+                <tr *ngFor="let vet of vets">
+                    <td>{{vet.firstName}} {{vet.lastName}}</td>
+                    <td>
+                        <a *ngIf="vet.specialties.length > 0" routerLink="/specialties">Specialties</a>
+                    </td>
+                    <td>
+                        <button class="btn">Add Specialties</button>
+                        <button class="btn">Edit Vet</button>
+                        <button class="btn">Del Vet</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn" routerLink="/vet-form/-1">Add Vet</button>
+    </div>
+
+</div>

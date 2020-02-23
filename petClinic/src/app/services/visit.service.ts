@@ -12,6 +12,7 @@ export class VisitService {
   constructor(private http: HttpClient) { }
 
   //Peticiones
+  
   obtenerVisitaId(idVisit){
     var objVisit = JSON.stringify({
       accion: "ObtenerVisitId",

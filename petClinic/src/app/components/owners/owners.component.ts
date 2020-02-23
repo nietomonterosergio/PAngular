@@ -10,7 +10,8 @@ import { OwnerService } from "../../services/owner.service";
 export class OwnersComponent implements OnInit {
 
   //Atributos
-  public owners:Array<Owner>;
+  public owners: Owner[];
+  //public owners: Array<Owner>;
 
   constructor(private servicioOwner: OwnerService) { }
 

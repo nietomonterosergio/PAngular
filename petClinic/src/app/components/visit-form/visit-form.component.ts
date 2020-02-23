@@ -40,7 +40,7 @@ export class VisitFormComponent implements OnInit {
     console.log("idPet " + petId);
 
     const visitId = this.route.snapshot.params["idVisit"];
-    console.log("idVisit" + visitId);
+    console.log("idVisit " + visitId);
 
 
     if (petId) {
@@ -48,36 +48,42 @@ export class VisitFormComponent implements OnInit {
       this.texto = "ADD";
       this.globalPetId = petId;
 
-      //Obtener el pet para escribir en el form el nombre y pasarle el id que necesita para añadir
+      //Obtener el pet para escribir en el form el nombre y pasarle el idPet que necesita para añadir
       this.httpPet.getPetId(petId).subscribe(objPet => {
-        console.log("Resp");
-        console.log(objPet);  
+        console.log("Resp oninit objPet");
+        console.log(objPet);
         this.pet = objPet;
-  
+
         //Para escribir la tabla de información inicial
         this.vacio = true;
       });
     }
 
     if (visitId) {
+      
       console.log("vamos a modificar");
       this.texto = "MOD";
       this.globalVisitId = visitId;
 
       //Recogemos el objeto visita y lo escribimos sus datos en el form
       this.httpVisit.obtenerVisitaId(visitId).subscribe(objVisit => {
+        console.log("Resp oninit objVisit");
         console.log(objVisit);
-        this.visit = objVisit;
-    
-        //Para que se vuelva a escribir la informacion de la tabla en el form, nos acordamos que todo objeto visita tiene dentro el objeto pet
-        this.pet = this.visit["pet"];
-        this.globalPetId = this.visit.id;
 
+        this.visit.id = objVisit.id;
+        this.visit.petId = objVisit["pet"].id;
+        this.visit.visitDate = objVisit.visitDate;
+        this.visit.description = objVisit.description;
+
+
+        //Para que se vuelva a escribir la informacion de la tabla en el form, nos acordamos que todo objeto visita tiene dentro el objeto pet
+        this.pet = objVisit["pet"];
+
+      
         //Para escribir la tabla de información inicial
         this.vacio = true;
         
-  
-      });      
+      });
     }
 
   }
@@ -86,8 +92,9 @@ export class VisitFormComponent implements OnInit {
 
     //console.log(this.pet);
     //console.log(this.visit);
-    
-    if(this.globalPetId) {
+
+    if (this.globalPetId) {
+      
       //Hay que pasarle el id del petId para que pueda hacer la peticion añadir correctamente
       this.visit.petId = this.globalPetId;
 
@@ -97,12 +104,14 @@ export class VisitFormComponent implements OnInit {
         this.ruta.navigate(["/owner/" + this.pet.owner.id]);
       })
     }
-    
-    if(this.globalVisitId){
+
+    if (this.globalVisitId) {
 
       //Hay que pasarle el id del petId para que pueda hacer la peticion modificar correctamente
-      
-      this.visit.petId = this.globalPetId;
+
+      console.log(this.visit.petId);
+
+      console.log("Objeto visita que vamos a modificar");
       console.log(this.visit);
 
       //Hay que pasarle el id de visita para que pueda hacer la petición modificar  correctamente

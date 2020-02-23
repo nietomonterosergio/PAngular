@@ -15,6 +15,8 @@ import { PetsComponent } from './components/pets/pets.component';
 import { PetFormComponent } from './components/pet-form/pet-form.component';
 import { VisitsComponent } from './components/visits/visits.component';
 import { VisitFormComponent } from './components/visit-form/visit-form.component';
+import { SpecialtiesComponent } from './components/specialties/specialties.component';
+import { VetFormComponent } from './components/vet-form/vet-form.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { VisitFormComponent } from './components/visit-form/visit-form.component
     PetsComponent,
     PetFormComponent,
     VisitsComponent,
-    VisitFormComponent
+    VisitFormComponent,
+    SpecialtiesComponent,
+    VetFormComponent
   ],
   imports: [
     BrowserModule,

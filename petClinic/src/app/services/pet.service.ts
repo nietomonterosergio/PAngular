@@ -30,6 +30,14 @@ export class PetService {
     });
     return this.http.post<Pet>(this.urlServidor, objPetId);
   }
+  
+  ListarVisitsPets(idPet){
+    var objVisits = JSON.stringify({
+      accion: "ListarVisitasPet",
+      id: idPet
+    });
+    return this.http.post<any>(this.urlServidor, objVisits);
+  }
 
   addPets(pet){
     var objPetAdd = JSON.stringify({

@@ -37,14 +37,15 @@ export class PetFormComponent implements OnInit {
   ngOnInit() {
 
     //Debemos de tener en cuenta que para añadir debemos de pasarle el id del owner mientras que para modificar debemos de pasar el id del pet 
-    console.log("Estamos en el petForm")
+    console.log("Estamos en el petForm");
+
     const ownerId = this.route.snapshot.params["idOwner"];
     console.log("OwnerId " + ownerId);
 
     this.globalOwnerId = ownerId;
 
     const petId = this.route.snapshot.params["idPet"];
-    console.log("OwnerPet " + petId);
+    console.log("PetId " + petId);
 
     this.globalPetId = petId;
 
@@ -83,14 +84,22 @@ export class PetFormComponent implements OnInit {
   }
 
   addModPet() {
-    console.log(this.pet);
+    
+    //console.log(this.pet);
+
 
     if (this.globalOwnerId) {
+      //Le añadimos el owner al objeto.pet para que pueda cojer el id del owner y añadirlo
       this.pet.owner = this.owner;
+
+      console.log("Pet que vamos a añadir");
+      console.log(this.pet);
+
       this.httpPet.addPets(this.pet).subscribe(respuesta => {
         console.log(respuesta);
         this.ruta.navigate(["/owner/" + this.owner.id])
       });
+
     }
     if(this.globalPetId){
       this.httpPet.modPets(this.pet).subscribe(respuesta => {
