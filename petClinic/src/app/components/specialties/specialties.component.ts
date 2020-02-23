@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Specialties } from "../../models/specialties";
+
 @Component({
   selector: 'app-specialties',
   templateUrl: './specialties.component.html',
@@ -7,14 +8,14 @@ import { Specialties } from "../../models/specialties";
 })
 export class SpecialtiesComponent implements OnInit {
   //Atributos
-  @Input() specialties: Specialties; 
+  @Input() specialties: Specialties[]; 
 
   constructor() { 
 
   }
 
   ngOnInit() {
-    console.log(this.specialties);
+    //console.log(this.specialties);
   }
 
 }

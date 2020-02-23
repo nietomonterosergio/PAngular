@@ -1,1 +1,20 @@
-<p>specialties works!</p>
+<h2>Specialties</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td class="table-dark">Name</td>
+            <td class="table-dark">Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let specialtie of specialties">
+            <td> {{specialtie.name}} </td>
+            <td>
+                <button class="btn">Mod</button>
+                <button class="btn">Del</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

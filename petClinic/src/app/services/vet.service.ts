@@ -31,5 +31,13 @@ export class VetService {
     });
     return this.http.post<Vet>(this.urlServidor, objVet);
   }
+
+  addVet(vet){
+    var objVet = JSON.stringify({
+      accion: "AnadeVet",
+      vet: vet
+    });
+    return this.http.post<any>(this.urlServidor, objVet);
+  }
   
 }

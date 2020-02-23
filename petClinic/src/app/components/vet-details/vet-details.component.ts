@@ -25,7 +25,9 @@ export class VetDetailsComponent implements OnInit {
     console.log("Id de vet",vetId);
 
     this.httpVet.getVetId(vetId).subscribe(objVet =>{
-      console.log( "Resp onninit", objVet)
+      console.log( "Resp onninit", objVet);
+      this.vet = objVet;
+
     });
   }
 

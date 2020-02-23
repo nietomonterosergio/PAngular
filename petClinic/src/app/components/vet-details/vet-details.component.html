@@ -1,1 +1,23 @@
-<p>vet-details works!</p>
+<h2>Vet Details</h2>
+<div class="row">
+    <div class="col mx-2">
+        <table class="table">
+                <tr>
+                    <th class="table-dark">Name</th>
+                    <td> {{vet.firstName}} {{vet.lastName}} </td>
+                </tr>
+                <tr>
+                    <th class="table-dark">Action</th>
+                    <td class="table-active">
+                        <button class="btn">Mod</button>
+                        <button class="btn">Del</button>
+                        <button class="btn">Add Specialties</button>
+                    </td>
+                </tr>
+        </table>
+    </div>
+
+    <div class="col">
+        <app-specialties [specialties]="vet.specialties"></app-specialties>
+    </div>
+</div>
