@@ -1,0 +1,66 @@
+<h1>Gestión de Facturas</h1>
+
+<h3>Detalle de la factura: {{detalleFactura}} </h3>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>CANTIDAD</td>
+                <td>CONCEPTO</td>
+                <td>PRECIO</td>
+                <td>TIPO IVA</td>
+                <td>IVA</td>
+                <td>TOTAL</td>
+                <td>EDITAR</td>
+                <td>BORRAR</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detalle of detalles">
+                <td> {{detalle.id}} </td>
+                <td> {{detalle.cantidad}} </td>
+                <td> {{detalle.concepto}} </td>
+                <td> {{detalle.precio}} </td>
+                <td> {{detalle.tipo_iva}} </td>
+                <td>{{((detalle.cantidad*detalle.precio)*detalle.tipo_iva/100) | number}}</td>
+                <td> {{((detalle.cantidad*detalle.precio) + ((detalle.cantidad*detalle.precio)*detalle.tipo_iva/100)) | number}}
+                </td>
+                <td><button (click)="mostrarDiv(detalle.id, detalle.cantidad, detalle.concepto, detalle.precio, detalle.tipo_iva)">Editar</button></td>
+                <td><button (click)="borraDetalle(detalle.id)">Borrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink="">Volver</a>
+
+    <br>
+    <br>
+
+    <button (click)="mostrarDiv(-1)">Nuevo Detalle</button>
+    <br>
+    <br>
+</div>
+
+<div *ngIf="mostrar">
+    <label>Cantidad</label>
+    <input type="text" [(ngModel)]="cantidad">
+    <br>
+    <br>
+    <label>Concepto</label>
+    <input type="text" [(ngModel)]="concepto">
+    <br>
+    <br>
+    <label>Precio</label>
+    <input type="text" [(ngModel)]="precio">
+    <br>
+    <br>
+    <label>Tipo Iva</label>
+    <input type="text" [(ngModel)]="tipo_iva">
+    <br>
+    <br>
+
+    <button (click)="addModDetalle()">{{accion}}</button>
+    <button (click)="noMostrarDiv()">Cancelar</button>
+</div>

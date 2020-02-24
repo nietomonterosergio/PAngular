@@ -8,7 +8,8 @@ import { HttpClient } from "@angular/common/http";
 export class PAJAXService {
 
   //Atributos
-  private urlServidor = "http://localhost/AJAX/angular/servidor.php";
+  //private urlServidor = "http://localhost/AJAX/angular/servidor.php";
+  private urlServidor = "http://localhost/AJAX/examenRepaso/servidor.php";
 
 
   
