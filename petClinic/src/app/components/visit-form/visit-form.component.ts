@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VisitService } from "../../services/visit.service";
 import { PetService } from "../../services/pet.service";
+import { TranfDatosService } from 'src/app/services/tranf-datos.service';
 
 //Para poder navegar (routing) de forma progrmática:
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 //Modelos
 import { Visit } from "../../models/visit";
 import { Pet } from "../../models/pet";
+
 
 @Component({
   selector: 'app-visit-form',
@@ -20,6 +22,7 @@ export class VisitFormComponent implements OnInit {
 
   private pet: Pet;
   private visit: Visit;
+  private visits: Visit[];
 
 
   private vacio: boolean;
@@ -27,7 +30,7 @@ export class VisitFormComponent implements OnInit {
   private globalPetId: number;
   private globalVisitId: number;
 
-  constructor(private httpVisit: VisitService, private httpPet: PetService, private ruta: Router, private route: ActivatedRoute) {
+  constructor(private httpVisit: VisitService, private httpPet: PetService, private tranferirDatos: TranfDatosService, private ruta: Router, private route: ActivatedRoute) {
 
     this.vacio = false;
     this.pet = <Pet>{};
@@ -42,6 +45,9 @@ export class VisitFormComponent implements OnInit {
     const visitId = this.route.snapshot.params["idVisit"];
     console.log("idVisit " + visitId);
 
+    //Para pintar los datos utilizando el servicio =>
+    this.visits = this.tranferirDatos.leerDatos();
+    console.log("Oninit array", this.tranferirDatos.leerDatos());
 
     if (petId) {
       console.log("Vamos a añadir");

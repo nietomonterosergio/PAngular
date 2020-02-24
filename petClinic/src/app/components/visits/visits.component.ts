@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { VisitService } from "../../services/visit.service";
 import { Visit } from "../../models/visit";
+import { TranfDatosService } from "../../services/tranf-datos.service";
 
 //Para poder navegar (routing) de forma progrmática:
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,12 +18,13 @@ export class VisitsComponent implements OnInit {
 
   @Output() borraVisit = new EventEmitter;
 
-  constructor(private http: VisitService, private ruta: Router, private route: ActivatedRoute) { 
+  constructor(private http: VisitService, private transferirDatos: TranfDatosService, private ruta: Router, private route: ActivatedRoute) { 
 
     //this.visits = <Visit[]>{}
   }
 
   ngOnInit() {
+    //this.transferirDatos.guardarDatos(this.visits);
     //console.log(this.visits);
   }
 
@@ -34,6 +36,7 @@ export class VisitsComponent implements OnInit {
       
       this.http.delVisit(id).subscribe( resp => {
         console.log(resp);
+        this.transferirDatos.guardarDatos(this.visits);
         this.borraVisit.emit(resp);
       });
     }

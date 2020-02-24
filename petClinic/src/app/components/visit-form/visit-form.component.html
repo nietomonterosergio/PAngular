@@ -44,5 +44,27 @@
         </div>
 
     </form>
+</div>
 
+
+<div>
+
+    <h3>Past Visits</h3>
+    <table class=" mt-5 table">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Descrition</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let visit of visits">
+                <td>{{visit.visitDate | date: "dd-MM-yyyy"}}</td>
+                <td> {{visit.description}} </td>
+            </tr>
+    
+        </tbody>
+    
+    </table>
 </div>
