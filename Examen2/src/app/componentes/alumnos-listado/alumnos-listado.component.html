@@ -1,0 +1,40 @@
+<h2>Listado de alumn@s</h2>
+
+<button routerLink="/alumno-form/-1">AÑADIR ALUMNO</button>
+<br>
+<br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+            <td>APELLIDOS</td>
+            <td>SEXO</td>
+            <td>FECHA NACIMIENTO</td>
+            <td>ESTADO CIVIL</td>
+            <td>MODIFICAR</td>
+            <td>BORRAR</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let alumno of alumnos">
+            <td>{{alumno.ID}}</td>
+            <td>{{alumno.NOMBRE}}</td>
+            <td>{{alumno.APELLIDOS}}</td>
+            <td>{{alumno.SEXO_NOMBRE}}</td>
+            <td>{{alumno.FECHA_NACIMIENTO | date: "dd-mm-yyyy"}}</td>
+            <td>{{alumno.NOMBRE_EC}}</td>
+            <td><button routerLink="/alumno-form/{{alumno.ID}}" [disabled]="mostrar">Modificar</button></td>
+            <td><button (click)="mostrarBorrar(alumno)" [disabled]="mostrar">Borrar</button></td>
+        </tr>
+    </tbody>
+    <tr>
+        <td> En total {{total}} Alumn@s</td>
+    </tr>
+    <tfoot>
+
+    </tfoot>
+</table>
+
+<app-alumno-del *ngIf="mostrar" [alumno]="borrarAlumno" (delAlumno)="actualizarAlumnos($event)"></app-alumno-del>

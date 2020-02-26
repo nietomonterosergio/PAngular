@@ -1,0 +1,52 @@
+<h1>{{texto}} alumno</h1>
+
+<div>
+    <form #alumnoForm="ngForm" (ngSubmit)="addModAlumno(alumnoForm.value)">
+
+        <label>NOMBRE</label>
+        <input type="text" required [(ngModel)]="alumno.NOMBRE" name="NOMBRE" #NOMBRE="ngModel">
+
+
+        <br>
+        <br>
+
+        <label>APELLIDOS</label>
+        <input type="text" required [(ngModel)]="alumno.APELLIDOS" name="APELLIDOS" #APELLIDOS="ngModel">
+
+        <br>
+        <br>
+
+        <label>SEXO</label>
+        <select [(ngModel)]="alumno.SEXO" name="SEXO" #SEXO="ngModel" required>
+            <option *ngFor="let sexo of sexos" [ngValue]="sexo.CODIGO">
+                {{sexo.NOMBRE}}
+            </option>
+        </select>
+
+        <br>
+        <br>
+
+        <label>FECHA NACIMIENTO</label>
+        <input type="Date" required [(ngModel)]="alumno.FECHA_NACIMIENTO" name="FECHA_NACIMIENTO" #FECHA_NACIMINETO="ngModel">
+
+        <br>
+        <br>
+
+        <label>ESTADO CIVIL</label>
+        <select [(ngModel)]="alumno.ESTADO_CIVIL" name="ESTADO_CIVIL" #ESTADO_CIVIL="ngModel" required>
+            <option *ngFor="let estadocivil of estadociviles" [ngValue]="estadocivil.ID">
+                {{estadocivil.NOMBRE}}
+            </option>
+        </select>
+
+        <br>
+        <br>
+
+        <button type="submit" [disabled]="!alumnoForm.valid">{{texto}}</button>
+        <button routerLink="/alumnos">Cancelar</button>
+
+    </form>
+
+
+
+</div>

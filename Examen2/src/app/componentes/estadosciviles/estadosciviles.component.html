@@ -1,0 +1,20 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let estadocivil of estadociviles">
+            <td>{{estadocivil.ID}}</td>
+            <td>{{estadocivil.NOMBRE}}</td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total {{total}} estados civiles</td>
+        </tr>
+    </tfoot>
+</table>
