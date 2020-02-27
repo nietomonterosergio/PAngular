@@ -1,7 +1,7 @@
 <h4>{{texto}} Vet</h4>
 
 <div>
-    
+
     <form class="form-horizontal" #vetForm="ngForm" (ngSubmit)="addModVet(vetForm.value)">
         <div class="form-group">
             <label>FirstName: </label>
@@ -17,10 +17,11 @@
                 LastName is required
             </div>
         </div>
-  
+
+        <!--En el select cuando ponemos ngModel es al atributo del ts que hacemos referencia y donde vamos a añadir lo que pongamos en el ngValue-->
         <div class="form-group">
             <label>Specialtie: </label>
-            <select class="form-control" [(ngModel)]="vet.specialties" name="specialtie">
+            <select class="form-control" [(ngModel)]="vet.specialties" name="specialtie" multiple>
                 <option *ngFor="let specialtie of specialties" [ngValue]="specialtie">
                     {{specialtie.name}}
                 </option>

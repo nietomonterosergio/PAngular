@@ -5,19 +5,26 @@
                 <tr>
                     <th>Name</th>
                     <th>Specialties</th>
+                    <th>MOD</th>
+                    <th>DEL</th>
+                    <th></th>
                 </tr>
 
             </thead>
 
             <tbody>
                 <tr *ngFor="let vet of vets">
-                    <td><a routerLink="/vet-details/{{vet.id}}">{{vet.firstName}} {{vet.lastName}}</a></td>
+                    <td><a>{{vet.firstName}} {{vet.lastName}}</a></td>
                     <td>
-                        <ul class="list-group list-group-flush" *ngFor="let specialtie of vet.specialties">
-                            <li class="list-group-item"> {{specialtie.name}} </li>
-                        </ul>
+                        <span *ngFor="let specialtie of vet.specialties">
+                            {{specialtie.name}} 
+                            <br>
+                        </span>
                     </td>
-                    
+                    <td>
+                        <Button class="btn btn-dark">Mod</Button>
+                    </td>
+                    <td><button class="btn btn-danger">Del</button></td>
                 </tr>
             </tbody>
         </table>

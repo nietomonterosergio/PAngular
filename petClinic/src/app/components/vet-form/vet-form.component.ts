@@ -44,10 +44,12 @@ export class VetFormComponent implements OnInit {
 
   addModVet(){
     
+    console.log("Vet que vamos a añadir", this.vet);
+
     if(this.globalVetId){
       this.httpVet.addVet(this.vet).subscribe(resp => {
         console.log(resp);
-        this.ruta.navigate(["/vet-details/"+ this.vet.id]);
+        this.ruta.navigate(["/vets"]);
       });
     }
   }
